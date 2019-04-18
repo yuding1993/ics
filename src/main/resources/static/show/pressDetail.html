@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link type="text/css" rel="stylesheet" href="../css/css.css">
+		<link type="text/css" rel="stylesheet" href="../css/iconfont.css">
+		<title>武汉电子口岸</title>
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/avalon.tap.js"></script>
+		<script type="text/javascript" src="../js/analyzeUrlPara.js"></script>
+		<script type="text/javascript" src="../js/dataUtil.js"></script>
+		<script type="text/javascript" src="js/pressDetail.js"></script>
+		<script> 
+			document.write("<script type='text/javascript' src="+Math.random()+"'js/rouji.js?'><\/script>");
+		</script>
+		<script type="text/javascript" src="../js/baidu.js"></script>
+		<style type="text/css">
+			.zheshia{
+				cursor:pointer;
+			}
+			.pressli{
+				height:180px;width:100%;opacity: 1;background-position: center center;
+			}
+			a{
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body ms-controller="pressDetail">
+		<!-- 头部 -->
+		<div class="top ">
+			<div class="centont">	
+				<div class="l"><a ms-click="@openUrlSelf(@resourcesCommon.logoImgLinkUrl)"><img ms-attr="{src:@resourcesCommon.logoImgUrl}"></a></div>
+				<div class="l">
+					<div class="l in-ewm"><img ms-attr="{src:@resourcesCommon.iosImgUrl}"></div>
+					<div class="l in-ewm"><img ms-attr="{src:@resourcesCommon.androidImgUrl}"></div>
+					<!-- 登陆前 -->
+					<div ms-if="!@isLogin" class="r loginhou1">
+						<p ms-text="@resourcesCommon.topFont"></p>
+		     		</div>
+		     		<!-- 登录后 -->
+					<div ms-if="@isLogin" class="r loginhou2"> 
+						<p ms-text="@resourcesCommon.topFont"></p>
+						<p>欢迎您  <u ms-text="@userName"></u><a href="/sec/logout">[退出]</a></p>
+		     		</div>
+				</div>
+			</div>
+		</div>
+		<div class="centont">
+			<ul class="nav">
+				<!--ms-for:el in @moduleList-->
+					<li><a ms-text="@el.moduleName" ms-if="@nowModuleId == @el.id" class="on" ms-click="@skipPage(@el.id,@el.pageUrl)"></a></li>
+					<li><a ms-text="@el.moduleName" ms-if="@nowModuleId != @el.id" ms-click="@skipPage(@el.id,@el.pageUrl)"></a></li>
+				<!--ms-for-end:-->
+			</ul>
+		</div>
+		<!-- 头部结束 -->
+		
+		<div class="in-banner">
+			<ul>
+				<li class="pressli" ms-css="{backgroundImage: 'url('+@detailInfo.imgUrl + ')'}"></li>
+			</ul>
+		</div>
+		<div class="centont" >
+			<div class="r center-content">
+				<div class="right-content-title"><img src="../img/icon6.png">当前位置 &gt; <font ms-text="@detailInfo.parentCatName"></font> &gt; <font ms-text="@detailInfo.catName"></font></div>
+				<div class="cc-content">
+					<p class="cc-center-title" ms-text="@detailInfo.pressInfo.pressName"></p>
+					<p class="cc-center-time">时 间：<font ms-text="@detailInfo.pressInfo.addTime|date('yyyy-MM-dd')"></font></p>
+					<div class="cc-center-nr" ms-html="@detailInfo.pressInfo.pressContent">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 页脚 -->
+		<div class="footer">
+			<div class="centont">
+				<ul class="youqing-link">
+					<li>友情链接</li>
+					<!--ms-for:(index,el) in @friendLinkCommon-->
+					 	<li>
+					 		<select onchange="firendLink(this.value)">
+					 			<option value="" ms-text="@el.catName"></option>
+					 			<!--ms-for:(indexf,ef) in @el.list-->
+					 				<option ms-attr="{value : @ef.friendLinkUrl}" ms-text="@ef.friendLinkName"></option>
+					 			<!--ms-for-end:-->
+					 		</select>
+					 		<i class="iconfont icon-xiangxiajiantou"></i>
+					 	</li>
+				 	<!--ms-for-end:-->
+				 	<p class="clear"></p>
+				</ul>
+				
+				<div ms-text="@resourcesCommon.bottomFont"></div> 
+			</div>
+		</div>
+		<!-- 页脚结束 -->
+	</body>
+</html>

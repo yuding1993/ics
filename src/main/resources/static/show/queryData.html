@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>武汉电子口岸有限公司</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+		<link rel="stylesheet" href="../css/public.css"/>
+		<link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+		<!--[if lt IE 9]>
+		<script src="../js/html5.js"></script>
+		<![endif]-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="../js/layer/layer.js"></script>
+		<script type="text/javascript" src="../js/avalon.tap.js"></script>
+		<script type="text/javascript" src="../js/analyzeUrlPara.js"></script>
+		<script type="text/javascript" src="../js/dataUtil.js"></script>
+		<script type="text/javascript" src="js/queryData.js"></script>
+		<script> 
+			document.write("<script type='text/javascript' src='js/rouji.js?' + "+Math.random()+"><\/script>");
+		</script>
+		<script type="text/javascript" src="../js/baidu.js"></script>
+		<style type="text/css">
+			a{
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body class="inner_body list_channel2page" ms-controller="queryData">
+		<div class="fullbackground" style="background-image:url(../images/fullbg3.jpg);"></div>
+		
+		<!-- 头部 -->
+		<header class="header">
+			<div class="w_1360 clearfix">
+				<!-- logo -->
+  				<a ms-click="@openUrlSelf(@resourcesCommon.logoImgLinkUrl)" class="logo"><img src="../images/logo2.png"></a>
+				<!-- logo结束 -->
+
+				<!-- 头部登录 -->
+  				<div class="top_land" ms-if="@isLogin">
+    				您好欢迎您 {{@userName}}
+    				<a href="/sec/modifyPasswordUrl">[修改密码]</a>
+    				<a href="/sec/logout">[退出]</a>
+  				</div>
+  				<!-- 头部登录结束 -->
+				
+			  	<!-- 模块菜单 -->
+  				<nav class="nav">
+					<ul class="clearfix">
+						<!--ms-for:el in @moduleList-->
+							<li><a ms-text="@el.moduleName" ms-click="@skipPage(@el.id,@el.pageUrl)"></a></li>
+						<!--ms-for-end:-->
+				    </ul>
+    				<span></span>
+  				</nav>
+  				<!-- 模块菜单结束 -->
+  				
+			  	<!-- 手机客户端 -->
+  				<ul class="app clearfix">
+    				<li>
+    					<a><img src="../images/ios_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.iosImgUrl}"><span>苹果客户端</span></em>
+    				</li>
+    				<li>
+    					<a><img src="../images/az_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.androidImgUrl}"><span>安卓客户端</span></em>
+    				</li>
+  				</ul>
+  				<!-- 手机客户端结束 -->
+  			</div>
+		</header>
+		<!-- 头部end -->
+		
+		<div class="location">
+  			<div class="w_1360">
+    			当前位置<i>&gt;</i><span ms-text="@moduleName"></span>
+  			</div>
+		</div>
+
+		<div id="dataCenter" style="height:960px;width:100%;padding-bottom:30px;">
+			
+		</div>
+
+		<!-- 功能分类 -->
+		<section class="main_section w_1200 clearfix">
+  			<ul class="enter_list enter_list2 clearfix" style="position:relative;">
+  				<!--ms-for:(index,el) in @actionMap-->
+  					<li ms-attr="{class : 'li'+(@index+1)}">
+	          			<a ms-click="@openActionLayer(@index)">
+	              			<em ms-css="{backgroundImage:'url('+@el.imgUrl+')'}"></em>
+	              			<span>{{el.actionParentName}}<i>{{el.englishName}}</i></span>
+	          			</a>
+	      			</li>
+  				<!--ms-for-end:-->
+  			</ul>
+		</section>
+		<!-- 功能分类结束 -->
+		
+		<!-- 功能详情 -->
+		<!--ms-for:(index,el) in @actionMap-->
+			<div class="hidden_pop" ms-attr="{id:'hidden_pop'+@index}">
+				<div class="new-tanchu ">
+					<div class="left"><img ms-attr="{src:@el.imgUrl2}"></div>
+					<div class="left" style="width:535px;">
+						<div class="new-title">
+							<p>{{@el.actionParentName}}<u>{{el.englishName}}</u></p>
+						</div>
+						<div class="new-mokuai">
+							<ul>
+								<b ms-for="(i,ef) in @el.actionList">
+									<!--ms-for:(indexm,em) in @ef.actionList-->
+									<li>
+										<a ms-if="@getStringLength(@em.actionName) > 6 && @el.status == 'y'" class="new-mokuai-a1" ms-click="@openUrl(@em.id,@em.loginType,@em.hasSuffix,@el.status,@em.doesTurnQp)">
+											<em ms-css="{backgroundImage:'url('+@em.imgUrl+')'}"></em>
+											<span ms-text="@em.actionName"></span>
+										</a>
+									</li>
+									<li><a ms-if="@getStringLength(@em.actionName) <= 6 && @el.status == 'y'" class="new-mokuai-a" ms-click="@openUrl(@em.id,@em.loginType,@em.hasSuffix,@el.status,@em.doesTurnQp)">
+											<em ms-css="{backgroundImage:'url('+@em.imgUrl+')'}"></em>
+											<span ms-text="@em.actionName"></span>
+										</a>
+									</li>
+									<li>
+										<a ms-if="@getStringLength(@em.actionName) > 6 && @el.status == 'n'" class="kh_sb1" ms-click="@openUrl(@em.id,@em.loginType,@em.hasSuffix,@el.status,@em.doesTurnQp)">
+											<u ms-css="{backgroundImage:'url('+@em.imgUrl+')'}"></u>
+											<span ms-text="@em.actionName"></span>
+										</a>
+									</li>
+									<li>
+										<a ms-if="@getStringLength(@em.actionName) <= 6 && @el.status == 'n'" class="kh_sb" ms-click="@openUrl(@em.id,@em.loginType,@em.hasSuffix,@el.status,@em.doesTurnQp)">
+											<u ms-css="{backgroundImage:'url('+@em.imgUrl+')'}"></u>
+											<span ms-text="@em.actionName"></span>
+										</a>
+									</li>
+									<!--ms-for-end:-->
+								</b>
+							</ul>
+						</div>
+						<div class="new-tishi" style="display: none"><img src="../images/new-jinggao.png">系统建设中 敬请期待！</div>
+						<div class="new-login loginGen"  style="display: none">
+							<img   src="../images/new-jinggao.png">必须登陆本系统方可访问！
+							<a ms-visible="!@isLogin" ms-click="@login">[立即登录]</a>
+						</div>
+						<div class="new-login noAuth"  style="display: none">
+							<img   src="../images/new-jinggao.png">抱歉，您没有权限访问此功能
+						</div>
+						<div class="new-login icLogin" style="display: none">
+							<img   src="../images/new-jinggao.png">必须通过IC卡登陆本系统方可访问！
+							<a ms-visible="!@isLogin" ms-click="@login">[立即登录]</a>
+						</div>
+					</div>
+					<p class="clearfix"></p>
+				</div>
+			</div>
+		<!--ms-for-end:-->
+		<!-- 功能详情结束 -->
+		
+		<!-- 底部 -->
+		<footer class="footer">
+  			<div class="w_1360" ms-html="@resourcesCommon.bottomFont">
+    			
+  			</div>
+		</footer>
+	</body>
+</html>

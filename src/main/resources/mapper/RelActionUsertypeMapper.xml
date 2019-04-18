@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wheport.ics.dao.RelActionUsertypeMapper">
+  <resultMap id="BaseResultMap" type="org.wheport.ics.domain.pojo.RelActionUsertype">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="action_id" jdbcType="INTEGER" property="actionId" />
+    <result column="usertype_id" jdbcType="VARCHAR" property="usertypeId" />
+  </resultMap>
+  <select id="selectByGen">
+    <!-- 
+    WARNING - @mbg.generated  
+    -->  
+    SELECT 
+        id AS id , 
+        action_id AS actionId , 
+        usertype_id AS usertypeId  
+    FROM 
+        rel_action_usertype
+  </select>
+</mapper>

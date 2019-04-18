@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wheport.ics.dao.ResourcesCommonMapper">
+  <resultMap id="BaseResultMap" type="org.wheport.ics.domain.pojo.ResourcesCommon">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="logo_img_link_url" jdbcType="VARCHAR" property="logoImgLinkUrl" />
+    <result column="ios_img_url" jdbcType="VARCHAR" property="iosImgUrl" />
+    <result column="android_img_url" jdbcType="VARCHAR" property="androidImgUrl" />
+    <result column="bottom_font" jdbcType="VARCHAR" property="bottomFont" />
+    <result column="reg_url" jdbcType="VARCHAR" property="regUrl" />
+    <result column="userguide_name" jdbcType="VARCHAR" property="userguideName" />
+    <result column="userguide_url" jdbcType="VARCHAR" property="userguideUrl" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_operator" jdbcType="VARCHAR" property="updateOperator" />
+  </resultMap>
+  <select id="selectByGen">
+    <!-- 
+    WARNING - @mbg.generated  
+    -->  
+    SELECT 
+        id AS id , 
+        logo_img_link_url AS logoImgLinkUrl , 
+        ios_img_url AS iosImgUrl , 
+        android_img_url AS androidImgUrl , 
+        bottom_font AS bottomFont , 
+        reg_url AS regUrl , 
+        userguide_name AS userguideName , 
+        userguide_url AS userguideUrl , 
+        update_time AS updateTime , 
+        update_operator AS updateOperator  
+    FROM 
+        resources_common
+  </select>
+</mapper>

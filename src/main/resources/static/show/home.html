@@ -1,0 +1,315 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>武汉电子口岸有限公司</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link href="../css/style.css" type="text/css" rel="stylesheet">
+    <link rel="icon" href="../images/favicon.ico" type="image/x-icon"/>
+</head>
+
+<style>
+    c {
+        color: #ffffff;
+    }
+</style>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/avalon.tap.js"></script>
+<script type="text/javascript" src="../js/analyzeUrlPara.js"></script>
+<script type="text/javascript" src="js/home.js"></script>
+<script type="text/javascript" src="../js/jquery.SuperSlide.2.1.1.js"></script>
+<script>
+    document.write("<script type='text/javascript' src='js/rouji.js?" + Math.random() + "'><\/script>");
+</script>
+<body ms-controller="home">
+<div class="header_wh w1200">
+    <div class="header_right">
+        <a class="ios"><b><em><img ms-attr="{src : @resourcesCommon.iosImgUrl}"><i>苹果客户端</i></em></b></a>
+        <a class="android"><b><em><img ms-attr="{src : @resourcesCommon.androidImgUrl}"><i>安卓客户端</i></em></b></a>
+        <!-- 头部登录 -->
+        <span ms-if="@isLogin">
+            <c>欢迎您 {{@userName}}</c>
+            <a href="/sec/modifyUserInfoUrl">企业中心</a>
+        </span>
+        <span ms-if="@isNotLogin">
+            <a href="/sec/login">登录</a>
+            <a href="/view/register">注册</a>
+        </span>
+        <!-- 头部登录结束 -->
+    </div>
+</div>
+<!-- 模块菜单 -->
+<div class="nav_wh w1200 clearfix">
+    <a href="home.html?moduleId=1"><img src="../images/wheport_logo.jpg" alt=""/></a>
+    <ul>
+        <!--ms-for:el in @moduleList-->
+        <li><a ms-text="@el.moduleName" ms-click="@skipPage(@el.id,@el.pageUrl)"></a></li>
+        <!--ms-for-end:-->
+    </ul>
+</div>
+<!-- 模块菜单结束 -->
+<div class="banner_wh w1200"><img src="../images/wheport_03.jpg" alt=""/></div>
+
+<div class="menu_wh w1200">
+    <ul>
+        <li><a href="http://www.hb-eport.gov.cn/index.html"><img src="../images/ico_wh01.png" alt=""/><p>单一窗口<br>标准版</p></a>
+            <div class="menu_list two" style="width: 166px;">
+            </div>
+        </li>
+
+        <li><img src="../images/ico_wh02.png" alt=""/><p>货物申报</p>
+            <div class="menu_list one">
+                <a target="_blank" href="http://gjhb.wh-eport.cn/gw/page/home/view">报关单申报</a>
+                <a target="_blank" href="http://gjhb.wh-eport.cn/gw/page/home/view">转关单申报</a>
+                <a target="_blank" href="https://cert.wh-eport.cn/user/certalllist">原产地证申报</a>
+                <a target="_blank" href="http://online.customs.gov.cn/">报关申报（旧版）</a>
+                <a target="_blank" href="https://decl.wh-eport.cn/html/shortcut.html">电子报检（旧版）</a>
+                <a target="_blank" href="https://search.wh-eport.cn/zhcx/">综合查询</a>
+            </div>
+        </li>
+        <li><img src="../images/ico_wh03.png" alt=""/><p>运输工具<br>申报</p>
+            <div class="menu_list two">
+                <a target="_blank" href="http://ship.wh-eport.cn/">船舶申报</a>
+                <a target="_blank" href="http://air.wh-eport.cn/">航空器申报</a>
+            </div>
+        </li>
+        <li><img src="../images/ico_wh04.png" alt=""/><p>出入境人员<br>联网监管</p>
+            <div class="menu_list three">
+                <a target="_blank" href="https://crjjg.wh-eport.cn/">出入境人员联网监管</a>
+            </div>
+        </li>
+        <li><img src="../images/ico_wh05.png" alt=""/><p>保税物流</p>
+            <div class="menu_list four">
+                <a target="_blank" href="http://sso.wh-eport.cn/ulogin?service=http://bls.wh-eport.cn/views/admin/login/autoLogin.html?code=bls">保税园区管理</a>
+                <a target="_blank" href="https://qgld.wh-eport.cn/">区港联动</a>
+                <a target="_blank" href="https://wlksh.wh-eport.cn/">物流可视化</a>
+            </div>
+        </li>
+        <li><img src="../images/ico_wh06.png" alt=""/><p>多式联运</p>
+            <div class="menu_list five">
+                <a target="_blank" href="https://www.hb-syw.cn/">水运物流</a>
+                <a target="_blank" href="https://konggang.wh-eport.cn/">空港货栈</a>
+                <a target="_blank" href="https://tielu.wh-eport.cn/">铁路货场</a>
+            </div>
+        </li>
+        <li><img src="../images/ico_wh07.png" alt=""/><p>物流贸易</p>
+            <div class="menu_list six">
+                <a target="_blank" href="https://cbec.wh-eport.cn/cbec-web/system">跨境电商公共服务</a>
+                <a target="_blank" href="http://shop.wh-eport.cn/sccg_wh/">市场采购贸易</a>
+            </div>
+        </li>
+        <li><img src="../images/ico_wh08.png" alt=""/><p>增值服务</p>
+            <div class="menu_list seven">
+                <a target="_blank" href="https://kjzz.wh-eport.cn/">跨境电商增值服务</a>
+                <a target="_blank" href="http://spsy_qyd.wh-eport.cn/">防伪溯源</a>
+                <a target="_blank" href="https://wsswj.hb-n-tax.gov.cn/">出口退税</a>
+            </div>
+        </li>
+        <li><a target="_blank" href="https://finance.wh-eport.cn/hywsite/i/wh/index.html"><img src="../images/ico_wh09.png" alt=""/><p>金融服务</p></a>
+            <div class="menu_list two" style="width: 166px;">
+            </div>
+        </li>
+        <li><img src="../images/ico_wh10.png" alt=""/><p>特色服务</p>
+            <div class="menu_list eight">
+                <a target="_blank" href="/show/companyDescZNDR.html">云报关</a>
+                <a target="_blank" href="/show/companyDescZNDR.html">智能导入</a>
+            </div>
+        </li>
+        <li><img src="../images/ico_wh11.png" alt=""/><p>政务服务</p>
+            <div class="menu_list nine">
+                <a target="_blank" href="https://search.wh-eport.cn/zhcx/a/enterprise/qualification/index">企业资质</a>
+                <a href="javascript:;">保金保函</a>
+                <a target="_blank" href="https://dwhl.wh-eport.cn/">对外互联</a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!--动态设计暂时取消-->
+<!--<div class="menu_wh w1200">-->
+    <!--<ul>-->
+        <!--&lt;!&ndash;ms-for:(index,el) in @actionMap&ndash;&gt;-->
+        <!--<li><img ms-attr="{src : @el.imgUrl}"/>-->
+            <!--<p ms-text="@el.actionParentName"></p>-->
+            <!--<div class="menu_list">-->
+                <!--<c ms-for="(i,ef) in @el.actionList">-->
+                    <!--&lt;!&ndash;ms-for:(index_m,em) in @ef.actionList&ndash;&gt;-->
+                    <!--<a ms-text="@em.actionName" ms-click="@openUrl(@em.id,@em.loginType,@em.hasSuffix,@el.status,@em.doesTurnQp)"></a>-->
+                    <!--&lt;!&ndash;ms-for-end:&ndash;&gt;-->
+                <!--</c>-->
+            <!--</div>-->
+        <!--</li>-->
+        <!--&lt;!&ndash;ms-for-end:&ndash;&gt;-->
+    <!--</ul>-->
+<!--</div>-->
+<div class="w1200 clearfix">
+    <div class="notice_left">
+        <div class="notice_box">
+            <h2><img src="../images/wheport_11.png" width="193" height="19" alt="通知公告"/>
+                <a ms-click="@gotoPressCatList(@pressMap[0].pressCatId,@pressMap[0].belongModuleId)">+</a>
+            </h2>
+            <ul class="bd">
+                <li>
+                    <span>
+                        <b ms-text="@pressMap[0].pressList[0].addTime|date('dd')"></b>
+                        <i ms-text="@pressMap[0].pressList[0].addTime|date('yyyy-MM')"></i>
+                    </span>
+                    <a ms-click="@gotoPressCatList(@pressMap[0].pressCatId,@pressMap[0].belongModuleId,@pressMap[0].pressList[0].id)"
+                       ms-text="@pressMap[0].pressList[0].pressName"></a>
+                </li>
+                <li>
+                    <span>
+                        <b ms-text="@pressMap[0].pressList[1].addTime|date('dd')"></b>
+                        <i ms-text="@pressMap[0].pressList[1].addTime|date('yyyy-MM')"></i>
+                    </span>
+                    <a ms-click="@gotoPressCatList(@pressMap[0].pressCatId,@pressMap[0].belongModuleId,@pressMap[0].pressList[1].id)"
+                       ms-text="@pressMap[0].pressList[1].pressName"></a>
+                </li>
+                <li>
+                    <span>
+                        <b ms-text="@pressMap[0].pressList[2].addTime|date('dd')"></b>
+                        <i ms-text="@pressMap[0].pressList[2].addTime|date('yyyy-MM')"></i>
+                    </span>
+                    <a ms-click="@gotoPressCatList(@pressMap[0].pressCatId,@pressMap[0].belongModuleId,@pressMap[0].pressList[2].id)"
+                       ms-text="@pressMap[0].pressList[2].pressName"></a>
+                </li>
+                <li>
+                    <span>
+                        <b ms-text="@pressMap[0].pressList[3].addTime|date('dd')"></b>
+                        <i ms-text="@pressMap[0].pressList[3].addTime|date('yyyy-MM')"></i>
+                    </span>
+                    <a ms-click="@gotoPressCatList(@pressMap[0].pressCatId,@pressMap[0].belongModuleId,@pressMap[0].pressList[3].id)"
+                       ms-text="@pressMap[0].pressList[3].pressName"></a>
+                </li>
+                <li>
+                    <span>
+                        <b ms-text="@pressMap[0].pressList[4].addTime|date('dd')"></b>
+                        <i ms-text="@pressMap[0].pressList[4].addTime|date('yyyy-MM')"></i>
+                    </span>
+                    <a ms-click="@gotoPressCatList(@pressMap[0].pressCatId,@pressMap[0].belongModuleId,@pressMap[0].pressList[4].id)"
+                       ms-text="@pressMap[0].pressList[4].pressName"></a>
+                </li>
+            </ul>
+            <ol class="hd">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ol>
+        </div>
+        <div class="notice_box2">
+            <a href="javascript:;" class="prev"></a>
+            <ul class="bd2">
+                <li>
+                    <a ms-click="@viewDetail(@carousel[0][0].pressId,@carousel[0][0].pressParentCatId,@carousel[0][0].pressBelongModuleId)">
+                        <img ms-attr="{src : @carousel[0][0].imgUrl}">
+                    </a>
+                    <p ms-text="@carousel[0][0].imgDesc"></p>
+                </li>
+                <li>
+                    <a ms-click="@viewDetail(@carousel[0][1].pressId,@carousel[0][1].pressParentCatId,@carousel[0][1].pressBelongModuleId)">
+                        <img ms-attr="{src : @carousel[0][1].imgUrl}">
+                    </a>
+                    <p ms-text="@carousel[0][1].imgDesc"></p>
+                </li>
+                <li>
+                    <a ms-click="@viewDetail(@carousel[0][2].pressId,@carousel[0][2].pressParentCatId,@carousel[0][2].pressBelongModuleId)">
+                        <img ms-attr="{src : @carousel[0][2].imgUrl}">
+                    </a>
+                    <p ms-text="@carousel[0][2].imgDesc"></p>
+                </li>
+                <li>
+                    <a ms-click="@viewDetail(@carousel[0][3].pressId,@carousel[0][3].pressParentCatId,@carousel[0][3].pressBelongModuleId)">
+                        <img ms-attr="{src : @carousel[0][3].imgUrl}">
+                    </a>
+                    <p ms-text="@carousel[0][3].imgDesc"></p>
+                </li>
+                <li>
+                    <a ms-click="@viewDetail(@carousel[0][4].pressId,@carousel[0][4].pressParentCatId,@carousel[0][4].pressBelongModuleId)">
+                        <img ms-attr="{src : @carousel[0][4].imgUrl}">
+                    </a>
+                    <p ms-text="@carousel[0][4].imgDesc"></p>
+                </li>
+            </ul>
+            <a href="javascript:;" class="next"></a>
+        </div>
+    </div>
+    <div class="notice_right">
+        <h2><img src="../images/wheport_12.png" width="159" height="27" alt=""/>
+            <a ms-click="@gotoPressCatList(@pressMap[1].pressCatId,@pressMap[1].belongModuleId)">+</a>
+        </h2>
+        <ul class="notice_right_img">
+            <li style="display:block"><a href="#"><img src="../images/wheport_07.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="../images/wheport_03.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="../images/wheport_07.jpg" alt=""/></a></li>
+        </ul>
+        <div class="notice_list">
+            <div class="notice_list_news">
+                <div class="notice_list_date">
+                    <span ms-text="@pressMap[1].pressList[0].addTime|date('dd')"></span>
+                    <b ms-text="@pressMap[1].pressList[0].addTime|date('yyyy-MM')"></b>
+                </div>
+                <a ms-click="@gotoPressCatList(@pressMap[1].pressCatId,@pressMap[1].belongModuleId,@pressMap[1].pressList[0].id)">
+                    <h3 ms-text="@pressMap[1].pressList[0].pressName"></h3>
+                </a>
+                <p ms-text="@pressMap[1].pressList[0].pressDesc"></p>
+            </div>
+            <ul>
+                <li class="on">
+                    <a ms-click="@gotoPressCatList(@pressMap[1].pressCatId,@pressMap[1].belongModuleId,@pressMap[1].pressList[1].id)">
+                        <span>01</span>
+                        <b ms-text="@pressMap[1].pressList[1].pressName"></b>
+                    </a>
+                </li>
+                <li class="on">
+                    <a ms-click="@gotoPressCatList(@pressMap[1].pressCatId,@pressMap[1].belongModuleId,@pressMap[1].pressList[2].id)">
+                        <span>02</span>
+                        <b ms-text="@pressMap[1].pressList[2].pressName"></b>
+                    </a>
+                </li>
+                <li class="on">
+                    <a ms-click="@gotoPressCatList(@pressMap[1].pressCatId,@pressMap[1].belongModuleId,@pressMap[1].pressList[3].id)">
+                        <span>03</span>
+                        <b ms-text="@pressMap[1].pressList[3].pressName"></b>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="footer_wh w1200">
+    <div class="footer_link">
+        <span>友情链接：</span>
+        <a href="http://www.hb-n-tax.gov.cn/">国家税务总局湖北省税务局</a>
+        <a href="http://www.hb-n-tax.gov.cn/wuhan/">国家税务总局武汉市税务局</a>
+        <a href="http://gsj.hubei.gov.cn/">湖北省工商行政管理局</a>
+        <a href="http://gsj.wuhan.gov.cn">武汉市工商行政管理局</a>
+        <!--<a ms-attr="{href : @friendLinkCommon[0].list[0].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[0].list[0].friendLinkName"></a>-->
+        <!--<a ms-attr="{href : @friendLinkCommon[0].list[1].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[0].list[1].friendLinkName"></a>-->
+        <!--<a ms-attr="{href : @friendLinkCommon[0].list[2].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[0].list[2].friendLinkName"></a>-->
+        <!--<a ms-attr="{href : @friendLinkCommon[1].list[0].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[1].list[0].friendLinkName"></a>-->
+        <!--<a ms-attr="{href : @friendLinkCommon[1].list[1].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[1].list[1].friendLinkName"></a>-->
+        <!--<a ms-attr="{href : @friendLinkCommon[1].list[2].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[1].list[2].friendLinkName"></a>-->
+        <!--<a ms-attr="{href : @friendLinkCommon[2].list[0].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[2].list[0].friendLinkName"></a>-->
+    </div>
+    <div class="footer_filing"><img src="../images/wheport_17.png" width="30" height="29"
+                                    alt=""/>鄂公网安备42010302000532号<span>|</span>鄂ICP备15021604号-2
+    </div>
+    <div class="footer_unit">武汉新港管理委员会（版权所有）<span>|</span>武汉电子口岸有限公司 （运营）<span>|</span>电话：400-188-0270
+    </div>
+</div>
+
+<script type="text/javascript">
+    jQuery('.notice_box').slide({titCell:'.hd li',mainCell:'.bd',effect:'leftLoop',autoPlay:true,interTime:3000});
+    jQuery('.notice_box2').slide({mainCell:".bd2",autoPage:true,effect:"left",autoPlay:true,vis:1,pnLoop:false,interTime:3000});
+    $(document).on('mouseover','.notice_list li',function(){
+        $(this).addClass('on').siblings().removeClass('on');
+        $('.notice_right_img li').hide().eq($(this).index()).show();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wheport.ics.dao.AdvertInfoMapper">
+  <resultMap id="BaseResultMap" type="org.wheport.ics.domain.pojo.AdvertInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="advert_name" jdbcType="VARCHAR" property="advertName" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="link_url" jdbcType="VARCHAR" property="linkUrl" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="add_operator" jdbcType="VARCHAR" property="addOperator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_operator" jdbcType="VARCHAR" property="updateOperator" />
+  </resultMap>
+  <select id="selectByGen">
+    <!-- 
+    WARNING - @mbg.generated  
+    -->  
+    SELECT 
+        id AS id , 
+        advert_name AS advertName , 
+        img_url AS imgUrl , 
+        link_url AS linkUrl , 
+        add_time AS addTime , 
+        add_operator AS addOperator , 
+        update_time AS updateTime , 
+        update_operator AS updateOperator  
+    FROM 
+        advert_info
+  </select>
+</mapper>

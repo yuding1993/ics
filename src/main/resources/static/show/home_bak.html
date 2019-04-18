@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>武汉电子口岸有限公司</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<link rel="stylesheet" href="../css/public.css"/>
+	<link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+	<!--[if lt IE 9]>
+	<script src="../js/html5.js"></script>
+	<style>
+		.footer div, .footer a {
+			color: #8faccf;
+		}
+
+		.link h3 em {
+			color: #fff;
+		}
+
+		.js_link .select ul li a {
+			background: #eee;
+		}
+
+		.main_section a {
+			color: #eee;
+		}
+
+		.common_title em i {
+			color: #ADB5B9
+		}
+	</style>
+	<![endif]-->
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script src="../js/common.js"></script>
+	<script src="../js/jquery.SuperSlide.2.1.1.js"></script>
+	<script type="text/javascript" src="../js/avalon.tap.js"></script>
+	<script type="text/javascript" src="../js/analyzeUrlPara.js"></script>
+	<script type="text/javascript" src="../js/dataUtil.js"></script>
+	<script type="text/javascript" src="js/home.js"></script>
+	<script>
+        document.write("<script type='text/javascript' src='js/rouji.js?"+Math.random()+"'><\/script>");
+	</script>
+	<script type="text/javascript" src="../js/baidu.js"></script>
+	<style type="text/css">
+		a{
+			cursor:pointer;
+		}
+		#msg_win{border:1px solid #666;background:#fff;width:300px;position:absolute;right:0px;margin:0px;display:none;overflow:hidden;z-index:99;}
+		#msg_win .icos{position:absolute;top:2px;*top:0px;right:2px;z-index:9;}
+		.icos a{float:left;color:#333;margin:1px;text-align:center;text-decoration:none;font-family:webdings;}
+		.icos a:hover{color:#666;}
+		#msg_title{text-align:center;background:#f8f8f8;border-bottom:1px solid #666;border-top:1px solid #FFF;border-left:1px solid #FFF;color:#000;height:25px;line-height:25px;text-indent:5px;}
+		#msg_content{margin:2px;width:300px;height:50px;overflow:hidden;text-align:center;line-height:46px;}
+		</style>
+</head>
+<body class="index_body" ms-controller="home">
+<div class="fullbackground" style="background-image:url(../images/sy_bg.jpg);"></div>
+
+<header class="header">
+	<div class="w_1360 clearfix">
+		<!-- logo -->
+		<a ms-click="@openUrlSelf(@resourcesCommon.logoImgLinkUrl)" class="logo"><img src="../images/logo.png"></a>
+		<!-- logo结束 -->
+
+		<!-- 头部登录 -->
+		<div class="top_land" ms-if="@isLogin">
+			您好欢迎您 {{@userName}}
+			<a href="/sec/modifyPasswordUrl">[修改密码]</a>
+			<a href="/sec/logout?logoutRequest=1">[退出]</a>
+		</div>
+		<!-- 头部登录结束 -->
+
+		<!-- 模块菜单 -->
+		<nav class="nav">
+			<ul class="clearfix">
+				<!--ms-for:el in @moduleList-->
+				<li><a ms-text="@el.moduleName" ms-click="@skipPage(@el.id,@el.pageUrl)"></a></li>
+				<!--ms-for-end:-->
+			</ul>
+			<span></span>
+		</nav>
+		<!-- 模块菜单结束 -->
+
+		<!-- 手机客户端 -->
+		<ul class="app clearfix">
+			<li>
+				<a><img src="../images/ios_icon.png"></a>
+				<em><img ms-attr="{src : @resourcesCommon.iosImgUrl}"><span>苹果客户端</span></em>
+			</li>
+			<li>
+				<a><img src="../images/az_icon.png"></a>
+				<em><img ms-attr="{src : @resourcesCommon.androidImgUrl}"><span>安卓客户端</span></em>
+			</li>
+		</ul>
+		<!-- 手机客户端结束 -->
+	</div>
+</header>
+
+<section class="main_section w_1200 clearfix">
+	<div class="left">
+		<!-- 通知公告 -->
+		<div class="notice">
+			<h3 class="title common_title">
+				<em>
+					<b ms-text="@pressMap[0].pressCatName"></b><i>Announcements </i>
+				</em>
+				<a ms-click="@gotoPressCatList(@pressMap[0].pressCatId,@pressMap[0].belongModuleId)">+</a>
+			</h3>
+			<div class="js_notice" >
+				<ul class="pic">
+					<li>
+						<dl class="common_txt clearfix">
+							<a ms-click="@gotoPressCatList(@pressMap[0].pressCatId,@pressMap[0].belongModuleId,@pressMap[0].pressList[0].id)">
+								<dt>
+									<b ms-text="@pressMap[0].pressList[0].addTime|date('dd')"></b><i ms-text="@pressMap[0].pressList[0].addTime|date('yyyy-MM')"></i>
+								</dt>
+								<dd>
+									<h4 ms-text="@pressMap[0].pressList[0].pressName"></h4>
+									<div class="txt" ms-text="@pressMap[0].pressList[0].pressDesc"></div>
+								</dd>
+							</a>
+						</dl>
+					</li>
+					<li>
+						<dl class="common_txt clearfix">
+							<a ms-click="@gotoPressCatList(@pressMap[0].pressCatId,@pressMap[0].belongModuleId,@pressMap[0].pressList[1].id)">
+								<dt>
+									<b ms-text="@pressMap[0].pressList[1].addTime|date('dd')"></b><i ms-text="@pressMap[0].pressList[1].addTime|date('yyyy-MM')"></i>
+								</dt>
+								<dd>
+									<h4 ms-text="@pressMap[0].pressList[1].pressName"></h4>
+									<div class="txt" ms-text="@pressMap[0].pressList[1].pressDesc"></div>
+								</dd>
+							</a>
+						</dl>
+					</li>
+					<li>
+						<dl class="common_txt clearfix">
+							<a ms-click="@gotoPressCatList(@pressMap[0].pressCatId,@pressMap[0].belongModuleId,@pressMap[0].pressList[2].id)">
+								<dt>
+									<b ms-text="@pressMap[0].pressList[2].addTime|date('dd')"></b><i ms-text="@pressMap[0].pressList[2].addTime|date('yyyy-MM')"></i>
+								</dt>
+								<dd>
+									<h4 ms-text="@pressMap[0].pressList[2].pressName"></h4>
+									<div class="txt" ms-text="@pressMap[0].pressList[2].pressDesc"></div>
+								</dd>
+							</a>
+						</dl>
+					</li>
+					<li>
+						<dl class="common_txt clearfix">
+							<a ms-click="@gotoPressCatList(@pressMap[0].pressCatId,@pressMap[0].belongModuleId,@pressMap[0].pressList[3].id)">
+								<dt>
+									<b ms-text="@pressMap[0].pressList[3].addTime|date('dd')"></b><i ms-text="@pressMap[0].pressList[3].addTime|date('yyyy-MM')"></i>
+								</dt>
+								<dd>
+									<h4 ms-text="@pressMap[0].pressList[3].pressName"></h4>
+									<div class="txt" ms-text="@pressMap[0].pressList[3].pressDesc"></div>
+								</dd>
+							</a>
+						</dl>
+					</li>
+					<li>
+						<dl class="common_txt clearfix">
+							<a ms-click="@gotoPressCatList(@pressMap[0].pressCatId,@pressMap[0].belongModuleId,@pressMap[0].pressList[4].id)">
+								<dt>
+									<b ms-text="@pressMap[0].pressList[4].addTime|date('dd')"></b><i ms-text="@pressMap[0].pressList[4].addTime|date('yyyy-MM')"></i>
+								</dt>
+								<dd>
+									<h4 ms-text="@pressMap[0].pressList[4].pressName"></h4>
+									<div class="txt" ms-text="@pressMap[0].pressList[4].pressDesc"></div>
+								</dd>
+							</a>
+						</dl>
+					</li>
+				</ul>
+				<a class="prev"></a>
+				<a class="next"></a>
+				<ul class="hd">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+
+			<script>
+                /*SuperSlide图片切换*/
+                jQuery(".js_notice").slide({mainCell:".pic",effect:"left", autoPlay:true, delayTime:600, trigger:"click"});
+			</script>
+
+		</div>
+		<!-- 新闻图片切换 -->
+		<div class="js_newsimg" >
+			<ul class="pic">
+				<li>
+					<a>
+						<div class="img"><img ms-attr="{src : @carousel[0][0].imgUrl}"></div>
+						<div class="txt" ms-text="@carousel[0][0].imgDesc" ms-click="@viewDetail(@carousel[0][0].pressId,@carousel[0][0].pressParentCatId,@carousel[0][0].pressBelongModuleId)"></div>
+					</a>
+				</li>
+				<li>
+					<a>
+						<div class="img"><img ms-attr="{src : @carousel[0][1].imgUrl}"></div>
+						<div class="txt" ms-text="@carousel[0][1].imgDesc" ms-click="@viewDetail(@carousel[0][1].pressId,@carousel[0][1].pressParentCatId,@carousel[0][1].pressBelongModuleId)"></div>
+					</a>
+				</li>
+
+				<li>
+					<a>
+						<div class="img"><img ms-attr="{src : @carousel[0][2].imgUrl}"></div>
+						<div class="txt" ms-text="@carousel[0][2].imgDesc" ms-click="@viewDetail(@carousel[0][2].pressId,@carousel[0][2].pressParentCatId,@carousel[0][2].pressBelongModuleId)"></div>
+					</a>
+				</li>
+				<li>
+					<a>
+						<div class="img"><img ms-attr="{src : @carousel[0][3].imgUrl}"></div>
+						<div class="txt" ms-text="@carousel[0][3].imgDesc" ms-click="@viewDetail(@carousel[0][3].pressId,@carousel[0][3].pressParentCatId,@carousel[0][3].pressBelongModuleId)"></div>
+					</a>
+				</li>
+				<li>
+					<a>
+						<div class="img"><img ms-attr="{src : @carousel[0][4].imgUrl}"></div>
+						<div class="txt" ms-text="@carousel[0][4].imgDesc" ms-click="@viewDetail(@carousel[0][4].pressId,@carousel[0][4].pressParentCatId,@carousel[0][4].pressBelongModuleId)"></div>
+					</a>
+				</li>
+				<li>
+					<a>
+						<div class="img"><img ms-attr="{src : @carousel[0][5].imgUrl}"></div>
+						<div class="txt" ms-text="@carousel[0][5].imgDesc" ms-click="@viewDetail(@carousel[0][5].pressId,@carousel[0][5].pressParentCatId,@carousel[0][5].pressBelongModuleId)"></div>
+					</a>
+				</li>
+			</ul>
+			<a class="prev"></a>
+			<a class="next"></a>
+		</div>
+
+		<script>
+            /*SuperSlide图片切换*/
+            jQuery(".js_newsimg").slide({ mainCell:".pic",effect:"left", autoPlay:true, delayTime:600, trigger:"click"});
+		</script>
+
+		<!-- 口岸资讯 -->
+		<div class="information">
+			<h3 class="title common_title">
+				<em>
+					<b ms-text="@pressMap[1].pressCatName"></b><i>information </i>
+				</em>
+				<a ms-click="@gotoPressCatList(@pressMap[1].pressCatId,@pressMap[1].belongModuleId)">+</a>
+			</h3>
+			<dl class="common_txt clearfix">
+				<a ms-click="@gotoPressCatList(@pressMap[1].pressCatId,@pressMap[1].belongModuleId,@pressMap[1].pressList[0].id)">
+					<dt>
+						<b ms-text="@pressMap[1].pressList[0].addTime|date('dd')"></b><i ms-text="@pressMap[1].pressList[0].addTime|date('yyyy-MM')"></i>
+					</dt>
+					<dd>
+						<h4 ms-text="@pressMap[1].pressList[0].pressName"></h4>
+						<div class="txt" ms-text="@pressMap[1].pressList[0].pressDesc"></div>
+					</dd>
+				</a>
+			</dl>
+			<ul>
+				<li>
+					<a ms-click="@gotoPressCatList(@pressMap[1].pressCatId,@pressMap[1].belongModuleId,@pressMap[1].pressList[1].id)">
+						<span ms-text="@pressMap[1].pressList[1].addTime|date('MM / dd')"></span>
+						<em ms-text="@pressMap[1].pressList[1].pressName"></em>
+						<i></i>
+					</a>
+				</li>
+				<li>
+					<a ms-click="@gotoPressCatList(@pressMap[1].pressCatId,@pressMap[1].belongModuleId,@pressMap[1].pressList[2].id)">
+						<span ms-text="@pressMap[1].pressList[2].addTime|date('MM / dd')"></span>
+						<em ms-text="@pressMap[1].pressList[2].pressName"></em>
+						<i></i>
+					</a>
+				</li>
+				<li>
+					<a ms-click="@gotoPressCatList(@pressMap[1].pressCatId,@pressMap[1].belongModuleId,@pressMap[1].pressList[3].id)">
+						<span ms-text="@pressMap[1].pressList[3].addTime|date('MM / dd')"></span>
+						<em ms-text="@pressMap[1].pressList[3].pressName"></em>
+						<i></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- 左侧 end -->
+
+	<div class="right">
+		<div class="right_top clearfix">
+			<dl class="widget widget1 ">
+				<a class="sgkb">
+					<dt style="padding-bottom: 0px;"><img src="../images/sgkb.png"></dt>
+					<dd>中国国际贸易单一窗口</dd>
+				</a>
+			</dl>
+			<ul class="widget widget1 clearfix" style="margin-left: 10px;">
+				<a ms-click="@openFriendLink(@friendLinkList[0].list[0].friendLinkUrl,@friendLinkList[0].list[0].id)">
+					<dt style="padding-bottom: 0px;"><img ms-attr="{src : @friendLinkList[0].list[0].friendLinkImgUrl}"></dt>
+					<dd ms-text="@friendLinkList[0].list[0].friendLinkName"></dd>
+				</a>
+			</ul>
+			<ul class="widget widget1 clearfix" style="margin-left: 10px;">
+				<a class="ydlb">
+					<dt style="padding-bottom: 0px;"><img src="../images/ydlb.png"></dt>
+					<dd>一单两报</dd>
+				</a>
+			</ul>
+			<ul class="widget widget1 clearfix" style="margin-left: 10px;">
+				<a class="zndr">
+					<dt style="padding-bottom: 0px;"><img src="../images/zndr.png"></dt>
+					<dd>智能导入</dd>
+				</a>
+			</ul>
+			<!-- <ul class="widget widget2 clearfix">
+                <li class="li1"><a ms-click="@openFriendLink(@friendLinkList[0].list[1].friendLinkUrl,@friendLinkList[0].list[1].id)"><em><img ms-attr="{src : @friendLinkList[0].list[1].friendLinkImgUrl}"></em><span ms-text="@friendLinkList[0].list[1].friendLinkName"></span></a></li>
+                  <li class="li2"><a ms-click="@openFriendLink(@friendLinkList[0].list[2].friendLinkUrl,@friendLinkList[0].list[2].id)"><em><img ms-attr="{src : @friendLinkList[0].list[2].friendLinkImgUrl}"></em><span ms-text="@friendLinkList[0].list[2].friendLinkName"></span></a></li>
+                  <li class="li3"><a ms-click="@openFriendLink(@friendLinkList[0].list[3].friendLinkUrl,@friendLinkList[0].list[3].id)"><em><img ms-attr="{src : @friendLinkList[0].list[3].friendLinkImgUrl}"></em><span ms-text="@friendLinkList[0].list[3].friendLinkName"></span></a></li>
+                  <li class="li4"><a ms-click="@openFriendLink(@friendLinkList[0].list[4].friendLinkUrl,@friendLinkList[0].list[4].id)"><em><img ms-attr="{src : @friendLinkList[0].list[4].friendLinkImgUrl}"></em><span ms-text="@friendLinkList[0].list[4].friendLinkName"></span></a></li>
+            </ul> -->
+			<!-- <div class="guide">
+                <a ms-click="@openFriendLink(@friendLinkList[0].list[5].friendLinkUrl,@friendLinkList[0].list[5].id)">
+                      <div class="img">
+                        <img ms-attr="{src : @friendLinkList[0].list[5].friendLinkImgUrl}">
+                      </div>
+                      <h3 class="title">
+                        <b ms-text="@friendLinkList[0].list[5].friendLinkName"></b><i>Handle affairs </i>
+                      </h3>
+                  </a>
+            </div> -->
+		</div>
+		<div class="right_center clearfix" style="margin-top: 10px;">
+			<ul class="widget widget2 clearfix" style="margin-left: -10px;">
+				<li class="li1"><a ms-click="@openFriendLink(@friendLinkList[0].list[1].friendLinkUrl,@friendLinkList[0].list[1].id)"><em><img ms-attr="{src : @friendLinkList[0].list[1].friendLinkImgUrl}"></em><span ms-text="@friendLinkList[0].list[1].friendLinkName"></span></a></li>
+				<li class="li2"><a ms-click="@openFriendLink(@friendLinkList[0].list[2].friendLinkUrl,@friendLinkList[0].list[2].id)"><em><img ms-attr="{src : @friendLinkList[0].list[2].friendLinkImgUrl}"></em><span ms-text="@friendLinkList[0].list[2].friendLinkName"></span></a></li>
+				<li class="li3"><a ms-click="@openFriendLink(@friendLinkList[0].list[3].friendLinkUrl,@friendLinkList[0].list[3].id)"><em><img ms-attr="{src : @friendLinkList[0].list[3].friendLinkImgUrl}"></em><span ms-text="@friendLinkList[0].list[3].friendLinkName"></span></a></li>
+				<li class="li4"><a ms-click="@openFriendLink(@friendLinkList[0].list[4].friendLinkUrl,@friendLinkList[0].list[4].id)"><em><img ms-attr="{src : @friendLinkList[0].list[4].friendLinkImgUrl}"></em><span ms-text="@friendLinkList[0].list[4].friendLinkName"></span></a></li>
+			</ul>
+			<dl class="widget widget4 land_state">
+				<a class="zhcx">
+					<dt style="padding-bottom: 0px;">
+						<img src="../images/zhcx.png">
+					</dt>
+					<dd>综合查询</dd>
+				</a>
+			</dl>
+			<!-- 登陆前 -->
+			<!-- <dl class="widget widget3" ms-if="!@isLogin">
+              <a ms-click="@login">
+                  <dt><img src="../static/images/widget_icon6.png"></dt>
+                  <dd>登录</dd>
+              </a>
+            </dl>
+            <dl class="widget widget4" ms-if="!@isLogin">
+              <a ms-click="@openUrl(@resourcesCommon.regUrl)">
+                  <dt><img src="../static/images/widget_icon7.png"></dt>
+                  <dd>注册</dd>
+              </a>
+            </dl> -->
+
+			<!-- 登陆后 -->
+			<!-- <dl class="widget widget3" ms-if="@isLogin">
+              <a target="_blank" href="updateUserInfo.jsp">
+                  <dt><img src="../static/images/widget_icon6.png"></dt>
+                  <dd>企业中心</dd>
+              </a>
+          </dl>
+          <dl class="widget widget4 land_state" ms-if="@isLogin">
+              <dt>
+                    <h3>您好，欢迎您</h3>
+                    <h4 ms-text="@userName"></h4>
+              </dt>
+              <dd>
+                    <a href="/sec/logout" class="leave_btn">退  出</a>
+              </dd>
+            </dl> -->
+
+			<div class="others clearfix">
+				<dl class="widget_other widget5">
+					<a target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=_sjIys3Py8nLzcO6i4vUmZWX">
+						<dt><img src="../images/widget_icon8.png"></dt>
+						<dd>用户反馈</dd>
+					</a>
+				</dl>
+				<dl class="widget_other widget6" ms-if="!@isLogin">
+					<!-- <a href="tencent://message/?uin=2207513179&Site=&Menu=yes">
+                        <dt><img src="../static/images/widget_icon9.png"></dt>
+                        <dd>客服QQ</dd>
+                    </a> -->
+					<a ms-click="@login">
+						<dt><img src="../images/widget_icon6.png"></dt>
+						<dd>登录</dd>
+					</a>
+				</dl>
+				<dl class="widget_other widget6" ms-if="@isLogin">
+					<a target="_blank" href="/sec/modifyUserInfoUrl">
+						<dt><img src="../images/widget_icon6.png"></dt>
+						<dd>企业中心</dd>
+					</a>
+				</dl>
+				<div class="widget link">
+					<a href="tencent://message/?uin=2207513179&Site=&Menu=yes">
+						<dt><img src="../images/kf.png"></dt>
+						<dd>客服</dd>
+					</a>
+				</div>
+				<!-- <div class="link">
+                      <h3 class="title"><em>友情链接</em></h3>
+                      <div class="link_wrap clearfix">
+                        <div class="js_link">
+                              <div class="select">
+                                <p ms-text="@friendLinkCommon[0].catName"></p>
+                                <ul>
+                                      <li><a ms-attr="{href : @friendLinkCommon[0].list[0].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[0].list[0].friendLinkName"></a></li>
+                                      <li><a ms-attr="{href : @friendLinkCommon[0].list[1].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[0].list[1].friendLinkName"></a></li>
+                                      <li><a ms-attr="{href : @friendLinkCommon[0].list[2].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[0].list[2].friendLinkName"></a></li>
+                                </ul>
+                              </div>
+                        </div>
+
+                        <div class="js_link">
+                              <div class="select">
+                                <p ms-text="@friendLinkCommon[1].catName"></p>
+                                <ul>
+                                      <li><a ms-attr="{href : @friendLinkCommon[1].list[0].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[1].list[0].friendLinkName"></a></li>
+                                      <li><a ms-attr="{href : @friendLinkCommon[1].list[1].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[1].list[1].friendLinkName"></a></li>
+                                      <li><a ms-attr="{href : @friendLinkCommon[1].list[2].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[1].list[2].friendLinkName"></a></li>
+                                </ul>
+                              </div>
+                        </div>
+
+                        <div class="js_link">
+                              <div class="select">
+                                <p ms-text="@friendLinkCommon[2].catName"></p>
+                                <ul>
+                                      <li><a ms-attr="{href : @friendLinkCommon[2].list[0].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[2].list[0].friendLinkName"></a></li>
+                                      <li><a ms-attr="{href : @friendLinkCommon[2].list[1].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[2].list[1].friendLinkName"></a></li>
+                                      <li><a ms-attr="{href : @friendLinkCommon[2].list[2].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[2].list[2].friendLinkName"></a></li>
+                                </ul>
+                              </div>
+                        </div>
+                      </div>
+                </div> -->
+			</div>
+		</div>
+		<div>
+			<iframe src="http://dt.wh-eport.cn/single" width="802px" height="270px" frameborder="0" scrolling="no"></iframe>
+		</div>
+	</div>
+</section>
+
+<footer class="footer">
+	<div class="footerLink">
+		<div class="footerLikeYQ">友情链接</div>
+		<div class="footerLikeA">
+			<div><a ms-attr="{href : @friendLinkCommon[0].list[0].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[0].list[0].friendLinkName"></a></div>
+			<div><a ms-attr="{href : @friendLinkCommon[0].list[1].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[0].list[1].friendLinkName"></a></div>
+			<div><a ms-attr="{href : @friendLinkCommon[0].list[2].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[0].list[2].friendLinkName"></a></div>
+			<div><a ms-attr="{href : @friendLinkCommon[1].list[0].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[1].list[0].friendLinkName"></a></div>
+			<div><a ms-attr="{href : @friendLinkCommon[1].list[1].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[1].list[1].friendLinkName"></a></div>
+			<div><a ms-attr="{href : @friendLinkCommon[1].list[2].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[1].list[2].friendLinkName"></a></div>
+			<div><a ms-attr="{href : @friendLinkCommon[2].list[0].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[2].list[0].friendLinkName"></a></div>
+		</div>
+		<div class="footerLikeA" style="margin-top: 10px;">
+			<div style="margin-left: 63px;"><a ms-attr="{href : @friendLinkCommon[2].list[1].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[2].list[1].friendLinkName"></a></div>
+			<div><a ms-attr="{href : @friendLinkCommon[2].list[2].friendLinkUrl}" target="_blank" ms-text="@friendLinkCommon[2].list[2].friendLinkName"></a></div>
+		</div>
+	</div>
+	<div class="w_1360" ms-html="@resourcesCommon.bottomFont" style="margin-top: 52px;">
+
+	</div>
+</footer>
+
+<!-- 底部广告框 -->
+<div id="msg_win" style="display:block;top:490px;visibility:visible;opacity:1;">
+	<div class="icos">
+		<a id="msg_min" title="最小化">—</a>
+		<a id="msg_close" title="关闭">X</a>
+	</div>
+	<div id="msg_title">帮助手册</div>
+	<div id="msg_content">
+		<a ms-attr="{href : @resourcesCommon.userguideUrl}" target="_blank">
+			{{@resourcesCommon.userguideName}}
+		</a>
+	</div>
+</div>
+
+<script language="javascript">
+    var Message={
+        set: function() {//最小化与恢复状态切换
+            var set=this.minbtn.status == 1?[0,1,'block',this.char[0],'最小化']:[1,0,'none',this.char[1],'恢复'];
+            this.minbtn.status=set[0];
+            this.win.style.borderBottomWidth=set[1];
+            this.content.style.display =set[2];
+            this.minbtn.innerHTML =set[3]
+            this.minbtn.title = set[4];
+            this.win.style.top = this.getY().top;
+        },
+        close: function() {//关闭
+            this.win.style.display = 'none';
+            window.onscroll = null;
+        },
+        setOpacity: function(x) {//设置透明度
+            var v = x >= 100 ? '': 'Alpha(opacity=' + x + ')';
+            this.win.style.visibility = x<=0?'hidden':'visible';//IE有绝对或相对定位内容不随父透明度变化的bug
+            this.win.style.filter = v;
+            this.win.style.opacity = x / 100;
+        },
+        show: function() {//渐显
+            clearInterval(this.timer2);
+            var me = this,fx = this.fx(0, 100, 0.1),t = 0;
+            this.timer2 = setInterval(function() {
+                t = fx();
+                me.setOpacity(t[0]);
+                if (t[1] == 0) {clearInterval(me.timer2) }
+            },10);
+        },
+        fx: function(a, b, c) {//缓冲计算
+            var cMath = Math[(a - b) > 0 ? "floor": "ceil"],c = c || 0.1;
+            return function() {return [a += cMath((b - a) * c), a - b]}
+        },
+        getY: function() {//计算移动坐标
+            var d = document,b = document.body, e = document.documentElement;
+            var s = Math.max(b.scrollTop, e.scrollTop);
+            var h = /BackCompat/i.test(document.compat@resourcesCommon)?b.clientHeight:e.clientHeight;
+            var h2 = this.win.offsetHeight;
+            return {foot: s + h + h2 + 2+'px',top: s + h - h2 - 2+'px'}
+        },
+        moveTo: function(y) {//移动动画
+            clearInterval(this.timer);
+            var me = this,a = parseInt(this.win.style.top)||0;
+            var fx = this.fx(a, parseInt(y));
+            var t = 0 ;
+            this.timer = setInterval(function() {
+                t = fx();
+                me.win.style.top = t[0]+'px';
+                if (t[1] == 0) {
+                    clearInterval(me.timer);
+                    me.bind();
+                }
+            },10);
+        },
+        bind:function (){//绑定窗口滚动条与大小变化事件
+            var me=this,st,rt;
+            window.onscroll = function() {
+                clearTimeout(st);
+                clearTimeout(me.timer2);
+                me.setOpacity(0);
+                st = setTimeout(function() {
+                    me.win.style.top = me.getY().top;
+                    me.show();
+                },600);
+            };
+            window.onresize = function (){
+                clearTimeout(rt);
+                rt = setTimeout(function() {me.win.style.top = me.getY().top},100);
+            }
+        },
+        init: function() {//创建HTML
+            function $(id) {return document.getElementById(id)};
+            this.win=$('msg_win');
+            var set={minbtn: 'msg_min',closebtn: 'msg_close',title: 'msg_title',content: 'msg_content'};
+            for (var Id in set) {this[Id] = $(set[Id])};
+            var me = this;
+            this.minbtn.onclick = function() {me.set();this.blur()};
+            this.closebtn.onclick = function() {me.close()};
+            this.char=navigator.userAgent.toLowerCase().indexOf('firefox')+1?['_','::','×']:['0','2','r'];//FF不支持webdings字体
+            this.minbtn.innerHTML=this.char[0];
+            this.closebtn.innerHTML=this.char[2];
+            setTimeout(function() {//初始化最先位置
+                me.win.style.display = 'block';
+                me.win.style.top = me.getY().foot;
+                me.moveTo(me.getY().top);
+            },0);
+            return this;
+        }
+    };
+
+    Message.init();
+    $(".widget a.sgkb").click(function(){
+        //window.open('http://bzb.hb-eport.gov.cn/hbsw/swProxy/decserver/sw/desk?menu_id=dec001', 'sgkb', 'resizable=yes');
+        // firendLink('http://bzb.hb-eport.gov.cn/hbsw/swProxy/decserver/sw/desk?menu_id=dec001');
+        firendLink('http://www.hb-eport.gov.cn/index.html');
+    });
+    $(".widget a.ydlb").click(function(){
+        //window.open('http://10.168.23.229:9100/page/home/view', 'ydlb', 'resizable=yes');
+        firendLink('http://gw.wh-eport.cn/page/home/view');
+    });
+    $(".widget a.zhcx").click(function(){
+        firendLink('http://search.wh-eport.cn/zhcx');
+    });
+    $(".widget a.zndr").click(function(){
+        window.location.href = './companyDescZNDR.html';
+        //firendLink('http://10.168.23.229:9100/page/home/view');
+    });
+</script>
+<!-- 底部广告框结束 -->
+</body>
+</html>

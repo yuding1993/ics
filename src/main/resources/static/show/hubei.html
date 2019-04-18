@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>武汉电子口岸有限公司</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link rel="stylesheet" href="../css/public.css"/>
+		<link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+		<!--[if lt IE 9]>
+		<script src="../js/html5.js"></script>
+		<![endif]-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="../js/avalon.tap.js"></script>
+		<script type="text/javascript" src="../js/analyzeUrlPara.js"></script>
+		<script type="text/javascript" src="../js/dataUtil.js"></script>
+		<script type="text/javascript" src="js/hubei.js"></script>
+		<script> 
+			document.write("<script type='text/javascript' src="+Math.random()+"'js/rouji.js?'><\/script>");
+		</script>
+		<script type="text/javascript" src="../js/baidu.js"></script>
+		<style type="text/css">
+			a{
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body ms-controller="hubei">
+		<div class="fullbackground" style="background-image:url(../images/fullchannel4bg.jpg);"></div>
+		<!-- 头部 -->
+		<header class="header">
+			<div class="w_1360 clearfix">
+				<!-- logo -->
+  				<a ms-click="@openUrlSelf(@resourcesCommon.logoImgLinkUrl)" class="logo"><img src="../images/logo.png"></a>
+				<!-- logo结束 -->
+
+				<!-- 头部登录 -->
+  				<div class="top_land" ms-if="@isLogin">
+    				您好欢迎您 {{@userName}}
+    				<a href="/sec/modifyPasswordUrl">[修改密码]</a>
+    				<a href="/sec/logout">[退出]</a>
+  				</div>
+  				<!-- 头部登录结束 -->
+				
+			  	<!-- 模块菜单 -->
+  				<nav class="nav">
+					<ul class="clearfix">
+						<!--ms-for:el in @moduleList-->
+							<li><a ms-text="@el.moduleName" ms-click="@skipPage(@el.id,@el.pageUrl)"></a></li>
+						<!--ms-for-end:-->
+				    </ul>
+    				<span></span>
+  				</nav>
+  				<!-- 模块菜单结束 -->
+  				
+			  	<!-- 手机客户端 -->
+  				<ul class="app clearfix">
+    				<li>
+    					<a><img src="../images/ios_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.iosImgUrl}"><span>苹果客户端</span></em>
+    				</li>
+    				<li>
+    					<a><img src="../images/az_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.androidImgUrl}"><span>安卓客户端</span></em>
+    				</li>
+  				</ul>
+  				<!-- 手机客户端结束 -->
+  			</div>
+		</header>
+		<!-- 头部end -->
+		
+		<div class="location">
+  			<div class="w_1360">
+    			当前位置<i>&gt;</i><span ms-text="@moduleName"></span>
+  			</div>
+		</div>
+
+
+		<section class="main_section w_1360 clearfix">
+			<!-- 湖北水运平台页面 -->
+  			<div class="list_systempage">
+    			<div class="list_systempagewrap">
+    				<div class="system_item system_item1">
+      					<h3 class="system_title" ms-text="@graphics[0].catName"></h3>
+      					<div class="txt" ms-text="@graphics[0].list[0].content">
+      						
+      					</div>
+      					<ul class="clearfix">
+      						<!--ms-for:(index,el) in @graphics[0].list-->
+	        					<li>
+	        						<a>
+		            					<em><img ms-attr="{src : @el.imgUrl}"></em>
+		            					<i class="line"></i>
+		            					<span ms-text="@el.name"></span>
+	          						</a>
+	          					</li>
+			          		<!--ms-for-end:-->
+      					</ul>
+    				</div>
+    				
+		    		<div class="system_item system_item2">
+		      			<h3 class="system_title" ms-text="@graphics[1].catName"></h3>
+		      			<ul class="clearfix">
+		      				<!--ms-for:(index,el) in @graphics[1].list-->
+			        			<li>
+			        				<a>
+				            			<em><img ms-attr="{src : @el.imgUrl}"></em>
+				            			<i class="line"></i>
+				            			<span ms-text="@el.name"></span>
+			          				</a>
+			          			</li>
+				          	<!--ms-for-end:-->
+		      			</ul>
+		    		</div>
+  
+    				<div class="system_item system_item3">
+      					<h3 class="system_title" ms-text="@graphics[2].catName"></h3>
+      					<dl class="clearfix">
+        					<dt><em><img ms-attr="{src : @graphics[2].list[0].imgUrl}"></em></dt>
+        					<dd>
+          						<h5 class="dot"></h5>
+          						<div class="txt" ms-html="@graphics[2].list[0].content">
+          							
+          						</div>
+        					</dd>
+      					</dl>
+    				</div>
+
+    				<div class="system_item system_item4">
+      					<h3 class="system_title" ms-text="@graphics[3].catName"></h3>
+      					<div class="system_goal clearfix">
+        					<dl>
+        						<a>
+          							<dt><img src="../images/goal_img1.jpg"></dt>
+          							<dd>
+            							<em><img ms-attr="{src : @graphics[3].list[0].imgUrl}"></em>
+            							<i class="line"></i>
+            							<span ms-text="@graphics[3].list[0].name"></span>
+            							<div class="txt" ms-text="@graphics[3].list[0].content">
+            								
+            							</div>
+          							</dd>
+          						</a>
+        					</dl>
+        					<dl>
+			        			<a>
+			          				<dt><img src="../images/goal_img2.jpg"></dt>
+			          				<dd>
+			            				<em><img ms-attr="{src : @graphics[3].list[1].imgUrl}"></em>
+			            				<i class="line"></i>
+			            				<span ms-text="@graphics[3].list[1].name"></span>
+			            				<div class="txt" ms-text="@graphics[3].list[1].content">
+			            					
+			            				</div>
+			          				</dd>
+			          			</a>
+        					</dl>
+			        		<dl>
+			        			<a>
+			          				<dt><img src="../images/goal_img3.jpg"></dt>
+			          				<dd>
+			            				<em><img ms-attr="{src : @graphics[3].list[2].imgUrl}"></em>
+			            				<i class="line"></i>
+			            				<span ms-text="@graphics[3].list[2].name"></span>
+			            				<div class="txt" ms-text="@graphics[3].list[2].content">
+			             					
+			            				</div>
+			          				</dd>
+			          			</a>
+			        		</dl>
+        					<dl>
+			        			<a>
+			          				<dt><img src="../images/goal_img4.jpg"></dt>
+			          				<dd>
+			            				<em><img ms-attr="{src : @graphics[3].list[3].imgUrl}"></em>
+			            				<i class="line"></i>
+			            				<span ms-text="@graphics[3].list[3].name"></span>
+			            				<div class="txt" ms-text="@graphics[3].list[3].content">
+			            					
+			            				</div>
+			          				</dd>
+			          			</a>
+			        		</dl>
+      					</div>
+    				</div>
+				</div>
+  			</div>
+			<!-- 湖北水运平台页面 end-->
+		</section>
+
+		<!-- 底部 -->
+		<footer class="footer">
+  			<div class="w_1360" ms-html="@resourcesCommon.bottomFont">
+    			
+  			</div>
+		</footer>
+	</body>
+</html>

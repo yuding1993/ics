@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>武汉电子口岸</title>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				queryFirstModule();
+			});
+			
+			function queryFirstModule(){
+				$.ajax({
+					url : "../view/queryFirstPage",
+					type : 'post',
+					error : function(){
+						alert("系统异常");
+					},
+					success : function(data){
+						if(data.code == "0"){
+							window.location.href = "/show/" + data.obj.pageUrl+"?moduleId="+data.obj.moduleId;
+						}else{
+							window.location.href = "localhost:8080/show/404.html";
+						}
+					}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

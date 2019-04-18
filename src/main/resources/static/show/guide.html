@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>武汉电子口岸有限公司</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link rel="stylesheet" href="../css/public.css"/>
+		<link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+		<!--[if lt IE 9]>
+        <script src="../js/html5.js"></script>
+        <![endif]-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="../js/avalon.tap.js"></script>
+		<script type="text/javascript" src="../js/analyzeUrlPara.js"></script>
+		<script type="text/javascript" src="../js/dataUtil.js"></script>
+		<script type="text/javascript" src="js/guide.js"></script>
+		<script> 
+			document.write("<script type='text/javascript' src="+Math.random()+"'js/rouji.js?'><\/script>");
+		</script>
+		<script type="text/javascript" src="../js/baidu.js"></script>
+		<style type="text/css">
+			a{
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body class="inner_body" ms-controller="guide">	
+		<div class="fullbackground" style="background-image:url(../images/fullguidebg.jpg);"></div>
+		
+		<!-- 头部 -->
+		<header class="header">
+			<div class="w_1360 clearfix">
+				<!-- logo -->
+  				<a ms-click="@openUrlSelf(@resourcesCommon.logoImgLinkUrl)" class="logo"><img src="../images/logo2.png"></a>
+				<!-- logo结束 -->
+
+				<!-- 头部登录 -->
+  				<div class="top_land" ms-if="@isLogin">
+    				您好欢迎您 {{@userName}}
+    				<a href="/sec/modifyPasswordUrl">[修改密码]</a>
+    				<a href="/sec/logout">[退出]</a>
+  				</div>
+  				<!-- 头部登录结束 -->
+				
+			  	<!-- 模块菜单 -->
+  				<nav class="nav">
+					<ul class="clearfix">
+						<!--ms-for:el in @moduleList-->
+							<li><a ms-text="@el.moduleName" ms-click="@skipPage(@el.id,@el.pageUrl)"></a></li>
+						<!--ms-for-end:-->
+				    </ul>
+    				<span></span>
+  				</nav>
+  				<!-- 模块菜单结束 -->
+  				
+			  	<!-- 手机客户端 -->
+  				<ul class="app clearfix">
+    				<li>
+    					<a><img src="../images/ios_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.iosImgUrl}"><span>苹果客户端</span></em>
+    				</li>
+    				<li>
+    					<a><img src="../images/az_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.androidImgUrl}"><span>安卓客户端</span></em>
+    				</li>
+  				</ul>
+  				<!-- 手机客户端结束 -->
+  			</div>
+		</header>
+		<!-- 头部end -->
+		
+		<div class="location">
+  			<div class="w_1360">
+    			当前位置<i>&gt;</i><span ms-text="@moduleName"></span>
+  			</div>
+		</div>
+
+		<section class="main_section w_1360 pt107 clearfix">
+  			<div class="inner_left">
+    			<div class="menue">
+			    	<ul>
+			    		<!--ms-for:(index,el) in @catInfo.pressCatList-->
+			    			<li ms-if="index == @nowPressIndex" class="on"><a ms-text="@el.catName" ms-click="@changePressIndex(index)"></a></li>
+			    			<li ms-if="index != @nowPressIndex"><a ms-text="@el.catName" ms-click="@changePressIndex(index)"></a></li>
+			    		<!--ms-for-end:-->
+			    	</ul>
+    			</div>
+  			</div>
+  			<div class="inner_right">
+  				<!-- 新闻列表页面 -->
+      			<div class="list_newspage" ms-visible="!@isViewDetail">
+      				<div class="inner_title">
+        				<em>
+        					<!--ms-for:(index,el) in @catInfo.pressCatList-->
+								<font ms-text="@el.catName" ms-if="index == @nowPressIndex"></font>
+							<!--ms-for-end:-->
+        				</em>
+      				</div>
+	      			<ul class="list_newstxt">
+	      				<!--ms-for:(index,el) in @pressInfo.pressInfoList-->
+	      					<li ms-if="!@el.isRelDownload"><a ms-click="@viewDetail(@el.id)"><em ms-text="@el.pressName"></em><span ms-text="@el.addTime|date('yyyy-MM-dd')"></span></a></li>
+	      					<li ms-if="@el.isRelDownload"><a ms-click="@downLoadFile(@el.id)"><em ms-text="@el.pressName"></em><span>点击下载</span></a></li>
+	      				<!--ms-for-end:-->
+      				</ul>
+      				<div class="page">
+        				<a ms-click="@pageQuery(@pressInfo.nowPage-1)" class="prev">prev</a>
+        				<!--ms-for:(index,el) in @pressInfo.pageList-->
+        					<a ms-if="el == @pressInfo.nowPage" ms-click="@pageQuery(@el)" class="num on" ms-text="@el"></a>
+        					<a ms-if="el != @pressInfo.nowPage" ms-click="@pageQuery(@el)" class="num" ms-text="@el"></a>
+        				<!--ms-for-end:-->
+        				<a ms-click="@pageQuery(@pressInfo.nowPage+1)" class="next">next</a>
+      				</div>
+    			</div>
+    			<!-- 新闻列表页面 end-->
+    			
+    			
+    			<!-- 新闻详情页面 -->
+				<div class="cont_infopage" ms-visible="@isViewDetail">
+  					<article class="post">
+    					<h1 class="entry_title" ms-text="@pressDetail.pressInfo.pressName"></h1>
+    					<div class="entry_meta"><span class="time">时间：{{@pressDetail.pressInfo.addTime|date('yyyy-MM-dd')}}</span><!-- <span  class="view">浏览：25次</span> --></div>     
+    					<div class="entry_content" ms-html="@pressDetail.pressInfo.pressContent">
+      						
+    					</div>  
+
+    					<div class="cont_infobot clearfix">
+         					<div class="left">
+            					<ul class="turnpage">
+            						<li>
+            							<a ms-if="@pressDetail.prevPressInfo != null && @pressDetail.prevPressInfo != undefined" ms-click="@viewDetail(@pressDetail.prevPressInfo.id)">
+            								上一条：
+            								<span ms-text="@pressDetail.prevPressInfo.pressName"></span>
+            							</a>
+            							<a ms-if="@pressDetail.prevPressInfo == null || @pressDetail.prevPressInfo == undefined">
+            								上一条：
+            								<span>无</span>
+            							</a>
+            						</li>
+            						<li>
+            							<a ms-if="@pressDetail.nextPressInfo != null && @pressDetail.nextPressInfo != undefined" ms-click="@viewDetail(@pressDetail.nextPressInfo.id)">
+            								下一条：
+            								<span ms-text="@pressDetail.nextPressInfo.pressName"></span>
+            							</a>
+            							<a ms-if="@pressDetail.nextPressInfo == null || @pressDetail.nextPressInfo == undefined">
+            								下一条：
+            								<span>无</span>
+            							</a>
+            						</li>
+          						</ul>
+        					</div>
+        					<!--分页 end--> 
+        					<a class="backprev" ms-click="@isViewDetail = !@isViewDetail">返  回</a>
+      					</div>  
+  					</article>
+				</div>
+				<!-- 新闻详情页面 end-->
+				
+  			</div>
+		</section>
+		
+		<!-- 底部 -->
+		<footer class="footer">
+  			<div class="w_1360" ms-html="@resourcesCommon.bottomFont">
+    			
+  			</div>
+		</footer>
+	</body>
+</html>

@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wheport.ics.dao.CustomViewMapper">
+
+	<select id="queryFirstPage" resultType="org.wheport.ics.domain.vo.FirstPage">
+		SELECT
+			mi.id as moduleId,
+			mi.module_sort as moduleSort,
+			pc.page_url as pageUrl
+		FROM
+			module_info mi left join page_config pc on pc.id = mi.page_id
+		ORDER BY 
+			mi.module_sort ASC
+		LIMIT 0,1
+	</select>
+
+	<select id="queryModuleList" resultType="org.wheport.ics.domain.bo.ModuleInfoModel">
+		SELECT
+			mi.id as id,
+			mi.module_name as moduleName,
+			mi.module_sort as moduleSort,
+			mi.page_id as pageId,
+			pc.page_url as pageUrl,
+			pc.mobile_url as mobileUrl,
+			pc.app_url as appUrl
+		FROM
+			module_info mi left join page_config pc on pc.id = mi.page_id
+		WHERE
+			1=1
+			and mi.work_status = 'y'
+		ORDER BY 
+			mi.module_sort ASC
+	</select>
+	
+	<select id="queryIndexPageContent" parameterType="java.lang.Integer" resultType="org.wheport.ics.domain.pojo.PageConfig">
+		SELECT
+			pc.is_rel_carousel as isRelCarousel,
+			pc.is_rel_press_cat as isRelPressCat,
+			pc.is_rel_action_cat as isRelActionCat,
+			pc.is_rel_advert as isRelAdvert,
+			pc.is_rel_img as isRelImg,
+			pc.is_rel_friend as isRelFriend,
+			pc.is_rel_graphics as isRelGraphics
+		FROM
+			module_info mi left join page_config pc on pc.id = mi.page_id
+		WHERE
+			mi.id = #{moduleId}
+	</select>
+	
+	<select id="queryModuleRelCarouselCatList" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT
+			rmc.carousel_cat_id
+		FROM
+			rel_module_carousel rmc left join carousel_image_cat cic on cic.id = rmc.carousel_cat_id
+		WHERE
+			rmc.module_id = #{moduleId}
+		ORDER BY
+			rmc.sort ASC
+	</select>
+	
+	<select id="queryCarouselImageInfo" parameterType="java.lang.Integer" resultType="org.wheport.ics.domain.bo.CarouselImageInfoModel">
+		SELECT
+			cii.id as id,
+			cii.img_url as imgUrl,
+			cii.img_desc as imgDesc,
+			rcp.press_id as pressId,
+			pc2.id as pressParentCatId,
+			pc2.belong_module_id as pressBelongModuleId
+		FROM
+			carousel_image_info cii left join rel_carousel_press rcp on rcp.carousel_id = cii.id
+			left join press_info pi on pi.id = rcp.press_id
+			left join press_cat pc on pc.id = pi.press_cat_id
+			left join press_cat pc2 on pc2.id = pc.parent_cat_id
+		WHERE
+			cii.carousel_cat_id = #{carouselCatId}
+			and cii.work_status = 'y'
+		ORDER BY 
+			cii.play_sort ASC
+	</select>
+	
+	<select id="queryModuleRelPressCatList" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT
+			rmp.press_cat_id
+		FROM
+			rel_module_press rmp left join press_cat pc on pc.id = rmp.press_cat_id
+		WHERE
+			rmp.module_id = #{moduleId}
+		ORDER BY 
+			rmp.sort ASC
+	</select>
+	
+	<select id="queryPressCatLevelTwo" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT
+			id
+		FROM
+			press_cat
+		WHERE
+			parent_cat_id = #{pressCatId}
+	</select>
+	
+	<select id="queryPressInfo" parameterType="java.util.List" resultType="org.wheport.ics.domain.bo.PressInfoModel">
+		SELECT
+			pi.id as id,
+			pi.press_name as pressName,
+			pi.press_img_url as pressImgUrl,
+			pi.press_desc as pressDesc,
+			pi.add_time as addTime,
+			pi.update_time as updateTime
+		FROM
+			press_info pi
+		WHERE
+			pi.press_cat_id IN
+			<foreach collection="list" item="pressCatId" index="index"
+           		open="(" close=")" separator=",">
+           		#{pressCatId}
+       		</foreach>
+       		ORDER BY
+       			pi.add_time DESC
+	</select>
+	
+	<select id="queryModuleRelActionCatList" parameterType="java.lang.Integer" resultType="java.util.Map">
+		SELECT
+			rmac.action_cat_id as actionCatId,
+			rmac.img_url as imgUrl,
+			rmac.img_url2 as imgUrl2,
+			rmac.english_name as englishName,
+			rmac.status as status
+		FROM
+			rel_module_action_cat rmac left join action_cat ac on ac.id = rmac.action_cat_id
+		WHERE
+			rmac.module_id = #{moduleId}
+			and ac.parent_id = 0
+		ORDER BY
+			rmac.sort ASC
+	</select>
+	
+	<select id="queryActionInfo" parameterType="java.lang.Integer" resultType="org.wheport.ics.domain.pojo.ActionInfo">
+		SELECT
+			id as id,
+			action_name as actionName,
+			<!-- action_link_url as actionLinkUrl, -->
+			login_type as loginType,
+			does_turn_qp as doesTurnQp,
+			has_suffix as hasSuffix,
+			img_url as imgUrl
+		FROM
+			action_info
+		WHERE
+			action_cat_id = #{actionCatId}
+			and work_status = 'y'
+		ORDER BY
+			action_sort ASC
+	</select>
+	
+	<select id="queryAdvertInfo" parameterType="java.lang.Integer" resultType="org.wheport.ics.domain.pojo.AdvertInfo">
+		SELECT
+			ai.id as id,
+			ai.img_url as imgUrl,
+			ai.link_url as linkUrl
+		FROM
+			advert_info ai left join rel_module_advert rma on rma.advert_id = ai.id
+		WHERE
+			rma.module_id = #{moduleId}
+		ORDER BY
+			rma.sort ASC
+	</select>
+	
+	<select id="queryResourcesImage" parameterType="java.lang.Integer" resultType="org.wheport.ics.domain.pojo.ResourcesImage">
+		SELECT
+			ri.id as id,
+			ri.resource_url as resourceUrl
+		FROM
+			resources_image ri left join rel_module_image rmi on rmi.img_id = ri.id
+		WHERE
+			rmi.module_id = #{moduleId}
+	</select>
+	
+	<select id="queryRelPressImg" parameterType="org.wheport.ics.domain.pojo.RelModulePress" resultType="org.wheport.ics.domain.pojo.RelModulePress">
+		SELECT
+			rel_img_url as relImgUrl
+		FROM
+			rel_module_press
+		WHERE
+			module_id = #{moduleId}
+			and press_cat_id = #{pressCatId}
+	</select>
+	
+	<select id="queryPressCatBackImg" parameterType="java.lang.Integer" resultType="java.lang.String">
+		SELECT
+			ri.resource_url
+		FROM
+			resources_image ri left join rel_module_image rmi on rmi.img_id = ri.id
+			left join press_cat pc on pc.belong_module_id = rmi.module_id
+		WHERE
+			pc.id = #{pressCatId}
+		ORDER BY
+			rmi.sort ASC
+	</select>
+	
+	<select id="queryPressCatList" parameterType="java.lang.Integer" resultType="org.wheport.ics.domain.pojo.PressCat">
+		SELECT
+			id as id,
+			cat_name as catName,
+			logo_url as logoUrl
+		FROM
+			press_cat
+		WHERE
+			parent_cat_id = #{pressCatId}
+	</select>
+	
+	<select id="queryPressListCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT
+			count(*)
+		FROM
+			press_info
+		WHERE
+			press_cat_id = #{pressCatId}
+	</select>
+	
+	<select id="queryPressInfoList" parameterType="org.wheport.ics.domain.bo.PageModel" resultType="org.wheport.ics.domain.bo.PressInfoModel">
+		SELECT
+			pi.id as id,
+			pi.press_name as pressName,
+			pi.add_time as addTime
+		FROM
+			press_info pi
+		WHERE
+			pi.press_cat_id = #{requestObj}
+		ORDER BY
+			pi.add_time DESC
+		LIMIT
+			#{startRecord},#{pageSize}
+	</select>
+	
+	<select id="queryCurrentPageCount" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT
+			mi.page_count
+		FROM
+			module_info mi left join press_cat pc on pc.belong_module_id = mi.id
+		WHERE
+			pc.id = #{pressCatId}
+	</select>
+	
+	<select id="queryPressCatNameByPressId" parameterType="java.lang.Integer" resultType="java.lang.String">
+		SELECT
+			pc.cat_name
+		FROM
+			press_cat pc left join press_info pi on pi.press_cat_id = pc.id
+		WHERE
+			pi.id = #{pressId}
+	</select>
+	
+	<select id="queryFriendLinkList" parameterType="org.wheport.ics.domain.pojo.FriendLinkInfo" resultType="org.wheport.ics.domain.pojo.FriendLinkInfo">
+		SELECT
+			id as id, 
+	        cat_id as catId, 
+	        friend_link_name as friendLinkName, 
+	        friend_link_url as friendLinkUrl, 
+	        friend_link_img_url as friendLinkImgUrl, 
+	        sort as sort, 
+	        work_status as workStatus, 
+	        add_time as addTime, 
+	        add_operator as addOperator, 
+	        update_time as updateTime, 
+	        update_operator as updateOperator  
+		FROM
+			friend_link_info
+		WHERE
+			work_status = 'y'
+			AND cat_id = #{catId}
+		ORDER BY
+			sort ASC
+	</select>
+	
+	<select id="queryFriendLinkCatList" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+		SELECT
+			friend_cat_id
+		FROM
+			rel_module_friend
+		WHERE
+			module_id = #{moduleId}
+		ORDER BY
+			sort ASC
+	</select>
+	
+	<select id="qeuryFriendLink" parameterType="java.lang.Integer" resultType="org.wheport.ics.domain.pojo.FriendLinkInfo">
+		SELECT
+			fli.id as id, 
+	        fli.cat_id as catId, 
+	        fli.friend_link_name as friendLinkName, 
+	        fli.friend_link_url as friendLinkUrl, 
+	        fli.friend_link_img_url as friendLinkImgUrl, 
+	        fli.sort as sort, 
+	        fli.work_status as workStatus, 
+	        fli.add_time as addTime, 
+	        fli.add_operator as addOperator, 
+	        fli.update_time as updateTime, 
+	        fli.update_operator as updateOperator
+		FROM
+			friend_link_info fli left join friend_link_cat flc on flc.id = fli.cat_id
+		WHERE
+			fli.work_status = 'y'
+			AND flc.id = #{friendCatId}
+		ORDER BY
+			sort ASC
+	</select>
+	
+	<select id="queryQuestionAndAnswer" resultType="org.wheport.ics.domain.bo.QuestionAndAnswersModel">
+		SELECT
+			id as id,
+			q_a_name as qAName,
+			question as question,
+			answer as answer,
+			sort as sort,
+			false as showOrHide
+		FROM
+			question_and_answers
+		WHERE
+			work_status = 'y'
+		ORDER BY
+			sort ASC
+	</select>
+	
+	<select id="queryVideo" resultType="org.wheport.ics.domain.pojo.VideoInfo">
+		SELECT
+			id as id,
+			video_name as videoName,
+			img_url as imgUrl,
+			video_url as videoUrl,
+			view_count as viewCount
+		FROM
+			video_info
+		WHERE
+			work_status = 'y'
+		ORDER BY
+			sort ASC
+	</select>
+	
+	<select id="queryRelModuleGraphicsList" parameterType="java.lang.Integer" resultType="java.util.Map">
+		SELECT
+			rmg.graphics_cat_id as catId,
+			gcc.cat_name as catName
+		FROM
+			rel_module_graphics rmg left join graphics_context_cat gcc on gcc.id = rmg.graphics_cat_id
+		WHERE
+			rmg.module_id = #{moduleId}
+		ORDER BY
+			rmg.sort ASC
+	</select>
+	
+	<select id="queryGraphicsList" parameterType="java.lang.Integer" resultType="org.wheport.ics.domain.pojo.GraphicsContext">
+		SELECT
+			id as id,
+			name as name,
+			link_url as linkUrl,
+			img_url as imgUrl,
+			content as content
+		FROM
+			graphics_context
+		WHERE
+			work_status = 'y'
+			AND cat_id = #{catId}
+		ORDER BY
+			sort ASC
+	</select>
+	
+	<select id="queryPressDetail" parameterType="org.wheport.ics.domain.bo.PressInfoModel" resultType="org.wheport.ics.domain.bo.PressInfoModel">
+		 SELECT 
+        	id AS id , 
+        	press_name AS pressName , 
+        	press_cat_id AS pressCatId , 
+        	press_img_url AS pressImgUrl , 
+        	work_status AS workStatus , 
+        	is_show_app AS isShowApp , 
+        	app_show_type AS appShowType , 
+        	add_time AS addTime , 
+        	add_operator AS addOperator , 
+        	update_time AS updateTime , 
+        	update_operator AS updateOperator , 
+        	press_desc AS pressDesc , 
+        	press_content AS pressContent 
+    	FROM 
+        	press_info
+		WHERE
+			id = #{id}
+	</select>
+	
+	<select id="queryPressRelFileList" parameterType="org.wheport.ics.domain.bo.PressInfoModel" resultType="org.wheport.ics.domain.pojo.DownloadFile">
+		SELECT
+			df.id as id,
+			df.file_name as fileName,
+			df.file_url as fileUrl
+		FROM
+			download_file df,
+			rel_file_press rfp
+		WHERE
+			df.id = rfp.file_id
+			AND	rfp.press_id = #{id}
+	</select>
+	
+</mapper>

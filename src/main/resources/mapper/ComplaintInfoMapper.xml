@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wheport.ics.dao.ComplaintInfoMapper">
+  <resultMap id="BaseResultMap" type="org.wheport.ics.domain.pojo.ComplaintInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="file_url" jdbcType="VARCHAR" property="fileUrl" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="add_operator" jdbcType="VARCHAR" property="addOperator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_operator" jdbcType="VARCHAR" property="updateOperator" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <select id="selectByGen">
+    <!-- 
+    WARNING - @mbg.generated  
+    -->  
+    SELECT 
+        id AS id , 
+        name AS name , 
+        mobile AS mobile , 
+        file_url AS fileUrl , 
+        add_time AS addTime , 
+        add_operator AS addOperator , 
+        update_time AS updateTime , 
+        update_operator AS updateOperator , 
+        content AS content  
+    FROM 
+        complaint_info
+  </select>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wheport.ics.dao.RelModuleCarouselMapper">
+  <resultMap id="BaseResultMap" type="org.wheport.ics.domain.pojo.RelModuleCarousel">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="module_id" jdbcType="INTEGER" property="moduleId" />
+    <result column="carousel_cat_id" jdbcType="INTEGER" property="carouselCatId" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="add_operator" jdbcType="VARCHAR" property="addOperator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_operator" jdbcType="VARCHAR" property="updateOperator" />
+  </resultMap>
+  <select id="selectByGen">
+    <!-- 
+    WARNING - @mbg.generated  
+    -->  
+    SELECT 
+        id AS id , 
+        module_id AS moduleId , 
+        carousel_cat_id AS carouselCatId , 
+        sort AS sort , 
+        add_time AS addTime , 
+        add_operator AS addOperator , 
+        update_time AS updateTime , 
+        update_operator AS updateOperator  
+    FROM 
+        rel_module_carousel
+  </select>
+</mapper>

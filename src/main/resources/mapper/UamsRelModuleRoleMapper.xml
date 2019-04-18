@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wheport.ics.dao.UamsRelModuleRoleMapper">
+  <resultMap id="BaseResultMap" type="org.wheport.ics.domain.pojo.UamsRelModuleRole">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="module_id" jdbcType="INTEGER" property="moduleId" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="add_operator" jdbcType="VARCHAR" property="addOperator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_operator" jdbcType="VARCHAR" property="updateOperator" />
+  </resultMap>
+  <select id="selectByGen">
+    <!-- 
+    WARNING - @mbg.generated  
+    -->  
+    SELECT 
+        id AS id , 
+        module_id AS moduleId , 
+        role_id AS roleId , 
+        add_time AS addTime , 
+        add_operator AS addOperator , 
+        update_time AS updateTime , 
+        update_operator AS updateOperator  
+    FROM 
+        uams_rel_module_role
+  </select>
+
+
+    <select id="findRelModuleRoleCount" parameterType="map" resultType="Long">
+      SELECT
+	    count(1)
+      FROM
+	    uams_rel_user_role u
+      LEFT JOIN uams_rel_module_role m ON u.role_id = m.role_id
+      <where>
+          <if test="userId !=null and userId!=''">
+              and u.user_id = #{userId}
+          </if>
+          <if test="moduleId !=null and moduleId!=''">
+              and m.module_id = #{moduleId}
+          </if>
+      </where>
+    </select>
+</mapper>

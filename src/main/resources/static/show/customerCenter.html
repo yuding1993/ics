@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>武汉电子口岸有限公司</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link rel="stylesheet" href="../css/public.css"/>
+		<link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+		<!--[if lt IE 9]>
+        <script src="../js/html5.js"></script>
+        <![endif]-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.form.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="../js/layer/layer.js"></script>
+		<script type="text/javascript" src="../js/avalon.tap.js"></script>
+		<script type="text/javascript" src="../js/analyzeUrlPara.js"></script>
+		<script type="text/javascript" src="../js/dataUtil.js"></script>
+		<script type="text/javascript" src="js/customerCenter.js"></script>
+		<script> 
+			document.write("<script type='text/javascript' src="+Math.random()+"'js/rouji.js?'><\/script>");
+		</script>
+		<script type="text/javascript" src="../js/baidu.js"></script>
+		<style type="text/css">
+			a{
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body ms-controller="customer">
+		<div class="fullbackground" style="background-image:url(../images/fullservicebg.jpg);"></div>
+		
+		<!-- 头部 -->
+		<header class="header">
+			<div class="w_1360 clearfix">
+				<!-- logo -->
+  				<a ms-click="@openUrlSelf(@resourcesCommon.logoImgLinkUrl)" class="logo"><img src="../images/logo.png"></a>
+				<!-- logo结束 -->
+
+				<!-- 头部登录 -->
+  				<div class="top_land" ms-if="@isLogin">
+    				您好欢迎您 {{@userName}}
+    				<a href="/sec/modifyPasswordUrl">[修改密码]</a>
+    				<a href="/sec/logout">[退出]</a>
+  				</div>
+  				<!-- 头部登录结束 -->
+				
+			  	<!-- 模块菜单 -->
+  				<nav class="nav">
+					<ul class="clearfix">
+						<!--ms-for:el in @moduleList-->
+							<li><a ms-text="@el.moduleName" ms-click="@skipPage(@el.id,@el.pageUrl)"></a></li>
+						<!--ms-for-end:-->
+				    </ul>
+    				<span></span>
+  				</nav>
+  				<!-- 模块菜单结束 -->
+  				
+			  	<!-- 手机客户端 -->
+  				<ul class="app clearfix">
+    				<li>
+    					<a><img src="../images/ios_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.iosImgUrl}"><span>苹果客户端</span></em>
+    				</li>
+    				<li>
+    					<a><img src="../images/az_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.androidImgUrl}"><span>安卓客户端</span></em>
+    				</li>
+  				</ul>
+  				<!-- 手机客户端结束 -->
+  			</div>
+		</header>
+		<!-- 头部end -->
+		
+		<div class="location">
+  			<div class="w_1360">
+    			当前位置<i>&gt;</i><span ms-text="@moduleName"></span>
+  			</div>
+		</div>
+
+		<section class="main_section w_1360 pt107 clearfix">
+  			<div class="inner_left">
+    			<div class="menue">
+      				<ul>
+      					<li ms-if="@showIndex == 0" class="on"><a>服务中心</a></li>
+      					<li ms-if="@showIndex != 0"><a ms-click="@showIndex = 0">服务中心</a></li>
+      					
+      					<li ms-if="@showIndex == 1" class="on"><a>咨询中心</a></li>
+      					<li ms-if="@showIndex != 1"><a ms-click="@showIndex = 1">咨询中心</a></li>
+      					
+      					<li ms-if="@showIndex == 2" class="on"><a>视频中心</a></li>
+      					<li ms-if="@showIndex != 2"><a ms-click="@showIndex = 2">视频中心</a></li>
+      					
+      					<li ms-if="@showIndex == 3" class="on"><a>常见问题</a></li>
+      					<li ms-if="@showIndex != 3"><a ms-click="@showIndex = 3">常见问题</a></li>
+      					
+      					<li ms-if="@showIndex == 4" class="on"><a>投诉建议</a></li>
+      					<li ms-if="@showIndex != 4"><a ms-click="@showIndex = 4">投诉建议</a></li>
+      				</ul>
+    			</div>
+  			</div>
+  			
+  			
+  			<div class="inner_right">
+  				<!-- 服务中心页面 -->
+      			<div class="list_servicepage" ms-visible="@showIndex == 0">
+        			<h3 class="inner_title">
+          				<em>服务中心</em>
+        			</h3>
+        			<div class="service_txt">
+          				<p>客服中心将提供统一保障、服务接口、为进出口贸易企业、船代、货代企业接入统一入口（企业服务专线）,为政府咨询以及各联检单位内部故障专线保障入口（政务服务专线），可以通过统一的保障电话申请服务，分类查询服务处理进程，跟踪处理进入、确保服务时效、把控服务质量。基于大数据为基础，更精准地定位客户需求，提供便捷化、个性化的服务方式。</p>
+        			</div>
+		        	<ul class="service_consultation clearfix">
+		          		<li><a><img src="../images/service_consultimg1.jpg"></a></li>
+		          		<li><a><img src="../images/service_consultimg2.jpg"></a></li>
+		        	</ul>
+        			<h3 class="inner_title">
+          				<em>服务方式</em>
+        			</h3>
+		        	<ul class="service_way clearfix">
+		          		<li class="li1"><img src="../images/service_img1.png"><span>热线咨询</span></li>
+		          		<li class="li2"><img src="../images/service_img2.png"><span>短信呼叫</span></li>
+		          		<li class="li3"><img src="../images/service_img3.png"><span>现场支持</span></li>
+		          		<li class="li4"><img src="../images/service_img4.png"><span>报错跟踪</span></li>
+		          		<li class="li5"><img src="../images/service_img5.png"><span>互联网在线服务</span></li>
+		          		<li class="li6"><img src="../images/service_img6.png"><span>远程接入技术支持</span></li>
+		        	</ul>
+      			</div>
+      			<!-- 服务中心页面end -->
+  				
+  				<!-- 咨询中心页面 -->
+    			<div class="list_contactpage clearfix" ms-visible="@showIndex == 1">
+    				<!-- 联系方式 -->
+      				<div class="list_map">
+        				<div class="inner_title">
+          					<em>联系方式</em>
+        				</div>
+        				<dl class="clearfix">
+          					<dt>
+            					<div id="allmap" class="map"></div>
+          					</dt>
+          					<dd>
+			            		<p class="p1">客服热线：027-85381756</p>
+			            		<p class="p2">电子邮件：wheport@163.com</p>
+			            		<p class="p3">公司地址：武汉市沿江大道69号长航大厦19楼</p>
+          					</dd>
+        				</dl>
+      				</div>
+      				
+      				<!-- 在线咨询 -->
+      				<div class="list_ask">
+        				<div class="inner_title">
+          					<em>在线咨询</em>
+        				</div>
+		        		<ul class="clearfix">
+		          			<li>
+		          				<a href="tencent://message/?uin=2207513179&Site=&Menu=yes">
+		            				<img src="../images/qq_icon.jpg" alt=""><span>客服人员（1）</span>
+		          				</a>
+		          			</li>
+		          			<li>
+		          				<a href="tencent://message/?uin=2207513179&Site=&Menu=yes">
+		            				<img src="../images/qq_icon.jpg" alt=""><span>客服人员（2）</span>
+		          				</a>
+		          			</li>
+		        		</ul>
+		      		</div>
+
+      				<!-- 移动平台 -->
+		      		<div class="list_mobile">
+		        		<div class="inner_title">
+		          			<em>移动平台</em>
+		        		</div>
+			        	<ul class="clearfix">
+			          		<li class="li1"><em><img ms-attr="{src : @resourcesCommon.iosImgUrl}"></em><span>IOS应用下载</span></li>
+			          		<li class="li2"><em><img ms-attr="{src : @resourcesCommon.androidImgUrl}"></em><span>Android应用下载</span></li>
+			          		<li class="li3"><em><img src="../images/ewm1.jpg"></em><span>微信公众号</span></li>
+			        	</ul>
+		      		</div>
+    			</div>
+    			<!-- 咨询中心页面end -->
+    			
+    			<!-- 视频中心页面 -->
+     			<div class="list_videopage" ms-visible="@showIndex == 2">
+       				<h3 class="inner_title">
+         				<em>视频中心</em>
+       				</h3>
+		       		<ul class="list_video clearfix">
+		       			<!--ms-for:(index,el) in @video-->
+		       				<li>
+			         			<a ms-click="@openUrl(@el.videoUrl)">
+			           				<div class="img" ms-click="@addViewCount(@el.id,@index)">
+			           					<img ms-attr="{src : @el.imgUrl}">
+			           				</div>
+			           				<div class="txt"><em ms-text="@el.videoName"></em><span>浏览：{{@el.viewCount}}次</span></div>
+			         			</a>
+			         		</li>
+		       			<!--ms-for-end:-->
+		       		</ul>
+     			</div>
+				<!-- 视频中心页面 end-->
+    			
+    			<!-- 常见问题页面 -->
+      			<div class="list_questionpage" ms-visible="@showIndex == 3">
+        			<div class="inner_title">
+          				<em>常见问题</em>
+        			</div>
+		        	<ul class="question_list" id="questionUl">
+		        		<!--ms-for:(index,el) in @question-->
+		        			<li>
+			            		<div class="title" ms-click="@toggleQuestion(@index)">
+			              			<a>
+			              				<em>q</em>
+			              				<span ms-text="@el.question"></span>
+			              			</a>
+			            		</div>
+			            		<div class="cont clearfix">
+			              			<em>a</em>
+			              			<div class="txt" ms-text="@el.answer"></div>
+			            		</div>
+			          		</li>
+		        		<!--ms-for-end:-->
+		        	</ul>
+      			</div>
+    			<!-- 常见问题页面 end-->
+    			
+    			<!-- 投诉建议页面 -->
+				<div class="list_messagepage" ms-visible="@showIndex == 4 && !@isTousu">
+  					<div class="inner_title">
+    					<em>投诉建议</em>
+  					</div>
+  					<div class="toptip">带<i class="need">*</i>符号的为必填项</div>
+  					<div class="list_message">
+	  					<form id="complaintForm" enctype="multipart/form-data">
+	    					<dl class="clearfix">
+	      						<dt>
+	        						<label>姓名<i class="need">*</i></label>
+				      			</dt>
+				      			<dd>
+				        			<input type="text" name="name" id="name" class="text1">
+				      			</dd>
+				    		</dl>
+				    		<dl class="clearfix">
+				      			<dt>
+				        			<label>电话<i class="need">*</i></label>
+				      			</dt>
+				      			<dd>
+				        			<input type="text" name="mobile" id="mobile" class="text1">
+				      			</dd>
+				    		</dl>
+				    		<dl class="clearfix">
+				      			<dt>
+				        			<label>内容<i class="need">*</i></label>
+				      			</dt>
+				      			<dd>
+				        			<textarea name="content" id="content" ></textarea>
+				      			</dd>
+				    		</dl>
+				    		<dl class="clearfix">
+				      			<dt>
+				        			<label>附件</label>
+				      			</dt>
+				      			<dd>
+				        			<div class="upload_wrap">
+				             			<input name="complaintFile" id="complaintFile" class="upload_btn" type="file" onchange="fileChange(this.value)">
+				             			<label for="complaintFile" class="upload_label">选择文件</label>
+				             			<span ms-text="@complaintFileValue"></span>
+				         			</div>
+				        			<div class="tip">只允许doc，docx文件大小不要超过2Mb</div>
+				      			</dd>
+				    		</dl>
+				    		<dl class="clearfix">
+				      			<dt>
+				        			<label>验证码<i class="need">*</i></label>
+				      			</dt>
+				      			<dd>
+				        			<img id="imageCaptcha" class="yzm zheshia" src="../VerifyCodeServlet" onclick="changeImg()">
+				        			<input type="text" name="captcha" id="captcha" class="text1 text2">
+				        			<input type="button" value="提交" class="btn" ms-click="@submitComplaint">
+				      			</dd>
+				    		</dl>
+				  		</form>
+			  		</div>
+			
+				  	<div class="message_bottip">
+				    	<div class="inner_title">
+				      		<em>受理范围</em>
+				    	</div>
+				    	<div class="txt">
+					      	<p><b>涉及以下内容的来信不属于本信箱受理范围</b></p>
+					      	<p>1. 向行政机关提出行政许可、登记、备案等事宜的；</p></p>
+					      	<p>2. 依法应当通过诉讼、仲裁、行政复议等法定途径解决的；</p>
+					      	<p>3. 需要向来信人求证而又无法与来信人取得联系的；</p>
+					      	<p>4. 无实际内容的；</p>
+					     	<p>5. 以盈利为目的的商业推销广告；</p>
+					      	<p>6. 各种恶意攻击性信息。</p>
+				    	</div>
+				  	</div>
+				</div>
+				<!-- 投诉建议 end -->
+				
+				<!-- 成功页面 -->
+				<div class="list_successpage" ms-visible="@showIndex == 4 && @isTousu">
+      				<h3 class="success_title">
+        				<span>提交成功！</span>
+      				</h3>
+      				<p class="txt">感谢您的宝贵建议，我们会认真考虑，斟酌采用，感谢您对武汉单一窗口服务平台的关注和支持</p>
+    			</div>
+				<!-- 成功页面 end -->
+				
+  			</div>
+		</section>
+		
+		
+		<!-- 底部 -->
+		<footer class="footer">
+  			<div class="w_1360" ms-html="@resourcesCommon.bottomFont">
+    			
+  			</div>
+		</footer>
+		
+		<!--引用百度地图API-->
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=A35e31b5ed3f1ce429f9f946fbefc013"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+		<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+		<script type="text/javascript">
+  			// 百度地图API功能
+    		var map = new BMap.Map('allmap');
+    		var poi = new BMap.Point(114.301225,30.576947);
+   		 	map.centerAndZoom(poi, 17);
+    		map.enableScrollWheelZoom();
+
+    		var content = '<div style="margin:0;line-height:26px;padding:2px;">' +
+                    	  	'地址：武汉市沿江大道69号长航大厦19楼<br/>电话：027-85381756' +
+                  		  '</div>';
+
+    		//创建检索信息窗口对象
+    		var searchInfoWindow = null;
+  			searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
+      			title  : "武汉电子口岸有限公司",      //标题
+      			width  : 180,             //宽度
+      			height : 50,              //高度
+      			panel  : "panel",         //检索结果面板
+      			enableAutoPan : true,     //自动平移
+      			searchTypes : [
+        			BMAPLIB_TAB_SEARCH,   //周边检索
+        			BMAPLIB_TAB_TO_HERE,  //到这里去
+        			BMAPLIB_TAB_FROM_HERE //从这里出发
+      			]
+    		});
+  			
+    		var marker = new BMap.Marker(poi); //创建marker对象
+    		marker.enableDragging(); //marker可拖拽
+    		marker.addEventListener("click", function(e){
+      			searchInfoWindow.open(marker);
+    		});
+    		map.addOverlay(marker); //在地图中添加marker
+  
+  			function openInfoWindow1() {
+    			searchInfoWindow1.open(new BMap.Point(114.301225,30.576947));
+  			}
+		</script>
+	</body>
+</html>
+	

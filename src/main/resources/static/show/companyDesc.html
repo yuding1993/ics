@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>武汉电子口岸有限公司</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link rel="stylesheet" href="../css/public.css"/>
+		<link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+		<!--[if lt IE 9]>
+        <script src="../js/html5.js"></script>
+        <![endif]-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.form.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="../js/layer/layer.js"></script>
+		<script type="text/javascript" src="../js/avalon.tap.js"></script>
+		<script type="text/javascript" src="../js/analyzeUrlPara.js"></script>
+		<script type="text/javascript" src="../js/dataUtil.js"></script>
+		<script type="text/javascript" src="js/companyDesc.js"></script>
+		<script> 
+			document.write("<script type='text/javascript' src='js/rouji.js?' "+Math.random()+" ><\/script>");
+		</script>
+		<script type="text/javascript" src="../js/baidu.js"></script>
+		<style type="text/css">
+			a{
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body ms-controller="companyDesc">
+		<div class="fullbackground" style="background-image:url(../images/fullservicebg.jpg);"></div>
+		
+		<!-- 头部 -->
+		<header class="header">
+			<div class="w_1360 clearfix">
+				<!-- logo -->
+  				<a ms-click="@openUrlSelf(@resourcesCommon.logoImgLinkUrl)" class="logo"><img src="../images/logo.png"></a>
+				<!-- logo结束 -->
+
+				<!-- 头部登录 -->
+  				<div class="top_land" ms-if="@isLogin">
+    				您好欢迎您 {{@userName}}
+    				<a href="/sec/modifyPasswordUrl">[修改密码]</a>
+    				<a href="/sec/logout">[退出]</a>
+  				</div>
+  				<!-- 头部登录结束 -->
+				
+			  	<!-- 模块菜单 -->
+  				<nav class="nav">
+					<ul class="clearfix">
+						<!--ms-for:el in @moduleList-->
+							<li><a ms-text="@el.moduleName" ms-click="@skipPage(@el.id,@el.pageUrl)"></a></li>
+						<!--ms-for-end:-->
+				    </ul>
+    				<span></span>
+  				</nav>
+  				<!-- 模块菜单结束 -->
+  				
+			  	<!-- 手机客户端 -->
+  				<ul class="app clearfix">
+    				<li>
+    					<a><img src="../images/ios_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.iosImgUrl}"><span>苹果客户端</span></em>
+    				</li>
+    				<li>
+    					<a><img src="../images/az_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.androidImgUrl}"><span>安卓客户端</span></em>
+    				</li>
+  				</ul>
+  				<!-- 手机客户端结束 -->
+  			</div>
+		</header>
+		<!-- 头部end -->
+		
+		<section class="main_section w_1360 pt107 clearfix">
+			<div class="inner_right" style="width:1024px;">
+				<div class="list_servicepage">
+	       			<h3 class="inner_title">
+	         			<em>公司简介</em>
+	       			</h3>
+	       			<div class="service_txt">
+	         			<p>
+	         				武汉电子口岸有限公司（以下简称公司）是经武汉市人民政府批准设立的国有独资有限责任公司，隶属武汉新港管理委员会管理，负责中国（武汉）国际贸易“单一窗口”（以下简称”单一窗口”）项目建设、运营，承担通关、物流、贸易、金融、大数据等综合服务。
+	         			</p>
+	         			<p>
+							“单一窗口”是武汉市人民政府贯彻国家长江经济带发展战略，落实国务院、国口办和省委省政府工作部署，打造的社会化公共服务平台，由武汉新港管理委员会统筹推进和建设。
+						</p>
+						<p>
+							为更好建设“单一窗口”，武汉新港管理委员会联合武汉海关、湖北出入境检验检疫局、长江海事局等联检单位共建共推。平台实现与海关、国检、海事、边防等联检单位信息数据全联通，与工商、国税、外管、公安等相关部门全对接，对事关货物、运输工具和人员等通关功能全集并，对武汉铁路、航空、公路等全部口岸全覆盖，对武汉市全市海关特殊监管区域业务全支持，对全省所有水运口岸和报关报检业务全延伸；平台实现一个电子化的报关报检和船舶备案的集中申报，实现一个终端的申报、查验、放行等综合数据的查询与推送，实现一个物流、贸易和通关相融合的产业链全程服务。
+						</p>
+						<p>
+							公司以服务为宗旨，全心全意为用户提供高效优质的口岸通关服务；以创新为理念，致力于提高口岸通关效率，致力于优化通关软环境，致力于提升武汉国际通达力，打造更为便利的口岸通关一体化服务新模式和多元的通关增值服务新方式。
+						</p>
+	       			</div>
+	     		</div>
+			</div>
+		</section>
+		
+		<!-- 底部 -->
+		<footer class="footer">
+  			<div class="w_1360" ms-html="@resourcesCommon.bottomFont">
+    			
+  			</div>
+		</footer>
+		
+	</body>
+</html>
+	

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wheport.ics.dao.PageConfigMapper">
+  <resultMap id="BaseResultMap" type="org.wheport.ics.domain.pojo.PageConfig">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="page_name" jdbcType="VARCHAR" property="pageName" />
+    <result column="page_url" jdbcType="VARCHAR" property="pageUrl" />
+    <result column="mobile_url" jdbcType="VARCHAR" property="mobileUrl" />
+    <result column="app_url" jdbcType="VARCHAR" property="appUrl" />
+    <result column="is_rel_carousel" jdbcType="VARCHAR" property="isRelCarousel" />
+    <result column="is_rel_press_cat" jdbcType="VARCHAR" property="isRelPressCat" />
+    <result column="is_rel_action_cat" jdbcType="VARCHAR" property="isRelActionCat" />
+    <result column="is_rel_advert" jdbcType="VARCHAR" property="isRelAdvert" />
+    <result column="is_rel_img" jdbcType="VARCHAR" property="isRelImg" />
+    <result column="is_rel_friend" jdbcType="VARCHAR" property="isRelFriend" />
+    <result column="is_rel_graphics" jdbcType="VARCHAR" property="isRelGraphics" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="add_operator" jdbcType="VARCHAR" property="addOperator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_operator" jdbcType="VARCHAR" property="updateOperator" />
+  </resultMap>
+  <select id="selectByGen">
+    <!-- 
+    WARNING - @mbg.generated  
+    -->  
+    SELECT 
+        id AS id , 
+        page_name AS pageName , 
+        page_url AS pageUrl , 
+        mobile_url AS mobileUrl , 
+        app_url AS appUrl , 
+        is_rel_carousel AS isRelCarousel , 
+        is_rel_press_cat AS isRelPressCat , 
+        is_rel_action_cat AS isRelActionCat , 
+        is_rel_advert AS isRelAdvert , 
+        is_rel_img AS isRelImg , 
+        is_rel_friend AS isRelFriend , 
+        is_rel_graphics AS isRelGraphics , 
+        add_time AS addTime , 
+        add_operator AS addOperator , 
+        update_time AS updateTime , 
+        update_operator AS updateOperator  
+    FROM 
+        page_config
+  </select>
+</mapper>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>武汉电子口岸有限公司</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link rel="stylesheet" href="../css/public.css"/>
+		<link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+		<!--[if lt IE 9]>
+        <script src="../js/html5.js"></script>
+        <![endif]-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="../js/avalon.tap.js"></script>
+		<script type="text/javascript" src="../js/analyzeUrlPara.js"></script>
+		<script type="text/javascript" src="../js/dataUtil.js"></script>
+		<script type="text/javascript" src="js/advertTwo.js"></script>
+		<script> 
+			document.write("<script type='text/javascript' src="+Math.random()+"'js/rouji.js?'><\/script>");
+		</script>
+		<script type="text/javascript" src="../js/baidu.js"></script>
+		<style type="text/css">
+			a{
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body ms-controller="advertTwo">
+		<div class="fullbackground" style="background-image:url(resources_wh/images/fullguidebg.jpg);"></div>
+		
+		<!-- 头部 -->
+		<header class="header">
+			<div class="w_1360 clearfix">
+				<!-- logo -->
+  				<a ms-click="@openUrlSelf(@resourcesCommon.logoImgLinkUrl)" class="logo"><img src="../images/logo2.png"></a>
+				<!-- logo结束 -->
+
+				<!-- 头部登录 -->
+  				<div class="top_land" ms-if="@isLogin">
+    				您好欢迎您 {{@userName}}
+    				<a href="/sec/modifyPasswordUrl">[修改密码]</a>
+    				<a href="/sec/logout">[退出]</a>
+  				</div>
+  				<!-- 头部登录结束 -->
+				
+			  	<!-- 模块菜单 -->
+  				<nav class="nav">
+					<ul class="clearfix">
+						<!--ms-for:el in @moduleList-->
+							<li><a ms-text="@el.moduleName" ms-click="@skipPage(@el.id,@el.pageUrl)"></a></li>
+						<!--ms-for-end:-->
+				    </ul>
+    				<span></span>
+  				</nav>
+  				<!-- 模块菜单结束 -->
+  				
+			  	<!-- 手机客户端 -->
+  				<ul class="app clearfix">
+    				<li>
+    					<a><img src="../images/ios_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.iosImgUrl}"><span>苹果客户端</span></em>
+    				</li>
+    				<li>
+    					<a><img src="../images/az_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.androidImgUrl}"><span>安卓客户端</span></em>
+    				</li>
+  				</ul>
+  				<!-- 手机客户端结束 -->
+  			</div>
+		</header>
+		<!-- 头部end -->
+		
+		<section class="main_section w_1360 pt107 clearfix">
+			<!-- 新闻详情页面 -->
+			<div class="white_bg">
+				<div class="cont_infopage">
+	  				<article class="post">
+	    				<h1 class="entry_title">共享新经济 共建大数据 共谋新发展</h1>
+	    				<div class="entry_meta"></div>
+	    				<p style="padding-top: 20px; margin-bottom: 10px;"><img src="../img/toupic85.jpg"></p>
+	    				<div class="entry_content">
+	      					<p style="padding-bottom:31px; text-indent:2em;">武汉电子口岸暨中国（武汉）国际贸易“单一窗口”将按照全国领先中部第一的目标迈进。建成后将实现与海关、国检、海事、边防等口岸联检单位信息数据全联通，与工商、国税、外汇管理、公安等政府职能单位全对接、对通关货物、运输工具和人员等通关功能全集并，对武汉铁路、航空、公路等各路口岸全覆盖，对武汉海关特殊监管区域（武汉新港空港综合保税区东西湖园区、武汉新港空港综合保税区阳逻港园区、武汉东湖综合保税区、武汉出口加工区）的保税、物流、仓储、加工、国际中转等业务全支持，平台服务对象覆盖武汉市乃至全省15000余家外贸出口企业，并实现向宜昌、襄阳、黄石、荆州等省内口岸，及长江经济带沿线泸州、宜宾、重庆、岳阳、九江、上海、宁波、舟山等水运口岸的全延伸。以“一个平台、分类服务；一个窗口、统一受理；一张大表、横向贯通；一次输入、多次使用；一套标准、无缝兼容；一处修改、全线更新；一次交费、全程通关”为建设标准，优质高效全面的服务好监管单位及省市外贸进出口企业、码头、场站。</p>
+	    				</div>  
+	
+	    				<div class="cont_infobot clearfix">
+	        				<a class="backprev" onclick="history.back()">返  回</a>
+	      				</div>  
+	  				</article>
+				</div>
+			</div>
+			<!-- 新闻详情页面 -->
+		</section>
+		
+		<!-- 底部 -->
+		<footer class="footer">
+  			<div class="w_1360" ms-html="@resourcesCommon.bottomFont">
+    			
+  			</div>
+		</footer>
+	</body>
+</html>
+	

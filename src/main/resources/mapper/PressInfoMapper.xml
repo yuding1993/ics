@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wheport.ics.dao.PressInfoMapper">
+  <resultMap id="BaseResultMap" type="org.wheport.ics.domain.pojo.PressInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="press_name" jdbcType="VARCHAR" property="pressName" />
+    <result column="press_cat_id" jdbcType="INTEGER" property="pressCatId" />
+    <result column="press_img_url" jdbcType="VARCHAR" property="pressImgUrl" />
+    <result column="work_status" jdbcType="VARCHAR" property="workStatus" />
+    <result column="is_show_app" jdbcType="VARCHAR" property="isShowApp" />
+    <result column="app_show_type" jdbcType="VARCHAR" property="appShowType" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="add_operator" jdbcType="VARCHAR" property="addOperator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_operator" jdbcType="VARCHAR" property="updateOperator" />
+    <result column="press_desc" jdbcType="LONGVARCHAR" property="pressDesc" />
+    <result column="press_content" jdbcType="LONGVARCHAR" property="pressContent" />
+  </resultMap>
+  <select id="selectByGen">
+    <!-- 
+    WARNING - @mbg.generated  
+    -->  
+    SELECT 
+        id AS id , 
+        press_name AS pressName , 
+        press_cat_id AS pressCatId , 
+        press_img_url AS pressImgUrl , 
+        work_status AS workStatus , 
+        is_show_app AS isShowApp , 
+        app_show_type AS appShowType , 
+        add_time AS addTime , 
+        add_operator AS addOperator , 
+        update_time AS updateTime , 
+        update_operator AS updateOperator , 
+        press_desc AS pressDesc , 
+        press_content AS pressContent  
+    FROM 
+        press_info
+  </select>
+</mapper>

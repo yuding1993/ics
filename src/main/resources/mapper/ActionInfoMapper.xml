@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.wheport.ics.dao.ActionInfoMapper">
+  <resultMap id="BaseResultMap" type="org.wheport.ics.domain.pojo.ActionInfo">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="action_name" jdbcType="VARCHAR" property="actionName" />
+    <result column="action_link_url" jdbcType="VARCHAR" property="actionLinkUrl" />
+    <result column="action_cat_id" jdbcType="INTEGER" property="actionCatId" />
+    <result column="action_sort" jdbcType="INTEGER" property="actionSort" />
+    <result column="work_status" jdbcType="VARCHAR" property="workStatus" />
+    <result column="login_type" jdbcType="VARCHAR" property="loginType" />
+    <result column="does_turn_qp" jdbcType="VARCHAR" property="doesTurnQp" />
+    <result column="has_suffix" jdbcType="VARCHAR" property="hasSuffix" />
+    <result column="suffix_param_name" jdbcType="VARCHAR" property="suffixParamName" />
+    <result column="img_url" jdbcType="VARCHAR" property="imgUrl" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="add_operator" jdbcType="VARCHAR" property="addOperator" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_operator" jdbcType="VARCHAR" property="updateOperator" />
+  </resultMap>
+  <select id="selectByGen">
+    <!-- 
+    WARNING - @mbg.generated  
+    -->  
+    SELECT 
+        id AS id , 
+        action_name AS actionName , 
+        action_link_url AS actionLinkUrl , 
+        action_cat_id AS actionCatId , 
+        action_sort AS actionSort , 
+        work_status AS workStatus , 
+        login_type AS loginType , 
+        does_turn_qp AS doesTurnQp , 
+        has_suffix AS hasSuffix , 
+        suffix_param_name AS suffixParamName , 
+        img_url AS imgUrl , 
+        add_time AS addTime , 
+        add_operator AS addOperator , 
+        update_time AS updateTime , 
+        update_operator AS updateOperator  
+    FROM 
+        action_info
+  </select>
+</mapper>

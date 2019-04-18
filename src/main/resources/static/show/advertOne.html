@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>武汉电子口岸有限公司</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link rel="stylesheet" href="../css/public.css"/>
+		<link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+		<!--[if lt IE 9]>
+		<script src="../js/html5.js"></script>
+		<![endif]-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="../js/avalon.tap.js"></script>
+		<script type="text/javascript" src="../js/analyzeUrlPara.js"></script>
+		<script type="text/javascript" src="../js/dataUtil.js"></script>
+		<script type="text/javascript" src="js/advertOne.js"></script>
+		<script> 
+			document.write("<script type='text/javascript' src="+Math.random()+"'js/rouji.js?'><\/script>");
+		</script>
+		<script type="text/javascript" src="../js/baidu.js"></script>
+		<style type="text/css">
+			a{
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body ms-controller="advertOne">
+		<div class="fullbackground" style="background-image:url(resources_wh/images/fullguidebg.jpg);"></div>
+		
+		<!-- 头部 -->
+		<header class="header">
+			<div class="w_1360 clearfix">
+				<!-- logo -->
+  				<a ms-click="@openUrlSelf(@resourcesCommon.logoImgLinkUrl)" class="logo"><img src="../images/logo2.png"></a>
+				<!-- logo结束 -->
+
+				<!-- 头部登录 -->
+  				<div class="top_land" ms-if="@isLogin">
+    				您好欢迎您 {{@userName}}
+    				<a href="/sec/modifyPasswordUrl">[修改密码]</a>
+    				<a href="/sec/logout">[退出]</a>
+  				</div>
+  				<!-- 头部登录结束 -->
+				
+			  	<!-- 模块菜单 -->
+  				<nav class="nav">
+					<ul class="clearfix">
+						<!--ms-for:el in @moduleList-->
+							<li><a ms-text="@el.moduleName" ms-click="@skipPage(@el.id,@el.pageUrl)"></a></li>
+						<!--ms-for-end:-->
+				    </ul>
+    				<span></span>
+  				</nav>
+  				<!-- 模块菜单结束 -->
+  				
+			  	<!-- 手机客户端 -->
+  				<ul class="app clearfix">
+    				<li>
+    					<a><img src="../images/ios_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.iosImgUrl}"><span>苹果客户端</span></em>
+    				</li>
+    				<li>
+    					<a><img src="../images/az_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.androidImgUrl}"><span>安卓客户端</span></em>
+    				</li>
+  				</ul>
+  				<!-- 手机客户端结束 -->
+  			</div>
+		</header>
+		<!-- 头部end -->
+		
+		<section class="main_section w_1360 pt107 clearfix">
+			<!-- 新闻详情页面 -->
+			<div class="white_bg">
+				<div class="cont_infopage">
+	  				<article class="post">
+	    				<h1 class="entry_title">一次申报 一次查验 一次放行</h1>
+	    				<h1 class="entry_title">“三个一”通关模式助企业降本增效</h1>
+	    				<div class="entry_meta"></div>
+	    				<p style="padding-top: 20px; margin-bottom: 10px;"><img src="../img/toupic25.jpg"></p>
+	    				<div class="entry_content">
+	      					<p style="padding-bottom:31px; text-indent:2em;">为落实国务院促进外贸稳定增长八条政策措施的重要抓手,进一步深化合作、促进贸易便利的重要举措,改进监管和服务，促进对外贸易平稳发展的具体行动。以信息化的手段，在不改变海关和检验检疫原有执法管理体制和业务系统格局的基础上，通过机制优化和模式创新，实现关检信息共享、执法互助，简化通关手续，提高通关效率，降低企业贸易成本，同时为企业提供公开透明的通关环境，实现阳光通关。</p>
+	      					<p style="padding-bottom:31px; text-indent:2em;">按照现行的报检和报关程序，企业应在报检系统录入“报检单”向检验检疫部门报检，在收到检验检疫部门的“通关单”后，再进入报关系统录入“报关单”电子数据向海关申报。进出口企业需要分头委托报检公司和报关公司办理手续，存在企业多头联系、多头申报、来回奔波的弊病。一次查验、一次放行，最大程度地简化通关流程，提高通关效率。</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">“三个一”是海关与出入境检验检疫部门合作推行的以“一次申报，一次查验，一次放行”的方式对进出口货物进行监管、验放的通关模式。“一次申报”，即“一次录入，分别申报”，是指企业只需一次录入申报数据，分别向海关和检验检疫部门发送。“一次查验”，即一次开箱，是指关检双方需要对同一批货物实施查验和检验检疫的，海关与检验检疫部门按照各自职责共同进行查验和检验检疫。“一次放行”即“关检联网核放”，是指对于运抵口岸的货物，海关和检验检疫部门分别发出核放信息，企业凭关检的核放信息办理货物提离手续。</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">“三个一”提高通关效率</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">“三个一”通关模式，将原来串联的“先报检后报关”通关流程转变成并联的“报检和报关同时进行”，对提高通关效率，减轻企业负担，优化口岸通关环境，促进武汉乃至湖北省对外贸易的发展具有重要意义。</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">首先，“一次申报”让企业只需完成一次输入，必输项信息进一步深度整合。即可同时完成报检和报关的录入。</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">其次，对于海关和检验检疫部门同时需要开箱查验、检验检疫的货物，实施“一次查验”可以减少重复吊箱、重复开箱等程序，移箱、掏箱费用比以前可节省一半，从而减轻企业负担，大幅提高通关效率。</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">第三，关检双方把一次放行信息发送给武汉电子口岸国际贸易单一窗口平台。武汉关区港口以及各码头根据放行信息进行抬杆放行。企业可自主登录平台获知相关放行信息，办理提货手续。一次放行利益信息化系统实现了放行信息的电子共享，有利于企业及时了解货物通关进程，进一步提高港口作业效率。</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">“三步走”企业顺利通关</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">根据“三个一”通关模式，企业只要“三步走”就能顺利通关。</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">第一步：在“一次申报”环节，企业将相关申报信息通过公共信息平台进行录入，然后分别向检验检疫、海关进行申报。</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">第二步：在“一次查验”环节，企业收到公共信息平台发送的报关号、报检号、提单号、集装箱号、移箱到位时间、集装箱摆放位置等信息后，通过公共信息平台向海关和检验检疫发起“一次查验”邀约，确定“一次查验”的具体时间。</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">第三步：在“一次放行”环节，企业凭公共信息平台的核放信息办理货物提离手续。</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">进出口企业需注意事项</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">在“三个一”通关模式的各环节，进出口企业分别要注意以下事项：</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">一是在“一次申报”环节，企业必须严格按照录入平台显示的要求进行规范操作，并且确保录入的信息真实准确。</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">二是在“一次查验”环节，企业发起“邀约查验时间”后，必须达成关检双方的一致同意，若有一方不同意邀约查验时间的，企业在公共信息平台上更改时间后重新发出邀约，直至双方确定“一次查验”时间为止。</p>
+	    					<p style="padding-bottom:31px; text-indent:2em;">三是在“一次放行”环节，企业应认真核对核放信息，发现疑问应及时与相关部门联系。</p>
+	    				</div>  
+	
+	    				<div class="cont_infobot clearfix">
+	        				<a class="backprev" onclick="history.back()">返  回</a>
+	      				</div>  
+	  				</article>
+				</div>
+			</div>
+			<!-- 新闻详情页面 -->
+		</section>
+
+		<!-- 底部 -->
+		<footer class="footer">
+  			<div class="w_1360" ms-html="@resourcesCommon.bottomFont">
+    			
+  			</div>
+		</footer>
+		
+	</body>
+</html>
+	

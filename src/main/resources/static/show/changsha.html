@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>武汉电子口岸有限公司</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<link rel="stylesheet" href="../css/public.css"/>
+		<link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
+		<!--[if lt IE 9]>
+        <script src="../js/html5.js"></script>
+        <![endif]-->
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script src="../js/common.js"></script>
+		<script src="../js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="../js/avalon.tap.js"></script>
+		<script type="text/javascript" src="../js/analyzeUrlPara.js"></script>
+		<script type="text/javascript" src="../js/dataUtil.js"></script>
+		<script type="text/javascript" src="js/changsha.js"></script>
+		<script> 
+			document.write("<script type='text/javascript' src="+Math.random()+"'js/rouji.js?'><\/script>");
+		</script>
+		<script type="text/javascript" src="../js/baidu.js"></script>
+		<style type="text/css">
+			a{
+				cursor:pointer;
+			}
+		</style>
+	</head>
+	<body ms-controller="changsha">
+		<div class="fullbackground" style="background-image:url(../images/fullchannel3bg.jpg);"></div>
+		<!-- 头部 -->
+		<header class="header">
+			<div class="w_1360 clearfix">
+				<!-- logo -->
+  				<a ms-click="@openUrlSelf(@resourcesCommon.logoImgLinkUrl)" class="logo"><img src="../images/logo.png"></a>
+				<!-- logo结束 -->
+
+				<!-- 头部登录 -->
+  				<div class="top_land" ms-if="@isLogin">
+    				您好欢迎您 {{@userName}}
+    				<a href="/sec/modifyPasswordUrl">[修改密码]</a>
+    				<a href="/sec/logout">[退出]</a>
+  				</div>
+  				<!-- 头部登录结束 -->
+				
+			  	<!-- 模块菜单 -->
+  				<nav class="nav">
+					<ul class="clearfix">
+						<!--ms-for:el in @moduleList-->
+							<li><a ms-text="@el.moduleName" ms-click="@skipPage(@el.id,@el.pageUrl)"></a></li>
+						<!--ms-for-end:-->
+				    </ul>
+    				<span></span>
+  				</nav>
+  				<!-- 模块菜单结束 -->
+  				
+			  	<!-- 手机客户端 -->
+  				<ul class="app clearfix">
+    				<li>
+    					<a><img src="../images/ios_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.iosImgUrl}"><span>苹果客户端</span></em>
+    				</li>
+    				<li>
+    					<a><img src="../images/az_icon.png"></a>
+    					<em><img ms-attr="{src : @resourcesCommon.androidImgUrl}"><span>安卓客户端</span></em>
+    				</li>
+  				</ul>
+  				<!-- 手机客户端结束 -->
+  			</div>
+		</header>
+		<!-- 头部end -->
+		
+		<div class="location">
+  			<div class="w_1360">
+    			当前位置<i>&gt;</i><span ms-text="@moduleName"></span>
+  			</div>
+		</div>
+
+		<section class="main_section w_1360 clearfix">
+			<!-- 长江经济带页面 -->
+  			<div class="list_economicpage">
+  				<div class="list_economicwrap">
+    				<div class="economic_item economic_item1">
+    					<h3 class="economic_title" ms-text="@graphics[0].list[0].name">
+      						
+    					</h3>
+    					<dl class="clearfix">
+      						<dt><em><img ms-attr="{src : @graphics[0].list[0].imgUrl}"></em></dt>
+      						<dd>
+        						<h5 class="dot"><img src="../images/dot_icon.jpg"></h5>
+        						<div class="txt" ms-html="@graphics[0].list[0].content">
+        							
+        						</div>
+      						</dd>
+    					</dl>
+    				</div>
+    
+    				<div class="economic_item economic_item2">
+      					<h3 class="economic_title" ms-text="@graphics[1].catName">
+        					
+      					</h3>
+      					<div class="economic_item2wrap clearfix">
+      						<!--ms-for:(index,el) in @graphics[1].list-->
+	        					<dl>
+	        					
+	        						<!-- 外链功能开启用这个 -->
+	        						<!-- <a ms-attr="{href : @el.linkUrl}" target="_blank">
+	            						<dt><img ms-attr="{src : @el.imgUrl}"></dt>
+	            						<dd>
+	              							<h3 ms-text="@el.name"></h3>
+	              							<p class="line"></p>
+	              							<div class="txt" ms-text="@el.content"></div>
+	              							<h4 class="more">查看详情+</h4>
+	            						</dd>
+	          						</a> -->
+	          						<!-- 外链功能开启用这个 -->
+	          						
+	          						<!-- 外链功能被关闭用这个 -->
+	          						<a>
+	            						<dt><img ms-attr="{src : @el.imgUrl}"></dt>
+	            						<dd>
+	              							<h3 ms-text="@el.name"></h3>
+	              							<p class="line"></p>
+	              							<div class="txt" ms-text="@el.content"></div>
+	              							<!-- <h4 class="more">查看详情+</h4> -->
+	            						</dd>
+	          						</a>
+	          						<!-- 外链功能被关闭用这个 -->
+	          					</dl>
+          					<!--ms-for-end:-->
+      					</div>
+    				</div>
+
+    				<div class="economic_item economic_item3">
+    					<h3 class="economic_title" ms-text="@graphics[2].list[0].name">
+      						
+    					</h3>
+    					<dl class="river_wrap">
+      						<dt ms-html="@graphics[2].list[0].content">
+      							
+      						</dt>
+      						<dd><img ms-attr="{src : @graphics[2].list[0].imgUrl}"></dd>
+    					</dl>
+    				</div>
+
+    				<div class="economic_item economic_item4">
+    					<h3 class="economic_title" ms-text="graphics[3].catName">
+      						
+				    	</h3>
+				    	<div class="port_wrap clearfix">
+				    		<!--ms-for:(index,el) in @graphics[3].list-->
+					      		<dl>
+					      			<a>
+		        						<dt>
+		        							<h4 class="dot"><img src="../images/dot2.jpg"></h4>
+		        							<h3 ms-text="@el.name"></h3>
+		        							<p class="line"></p>
+		        						</dt>
+		        						<dd ms-html="@el.content">
+				          					
+				        				</dd>
+			        				</a>
+	      						</dl>
+      						<!--ms-for-end:-->
+    					</div>
+    				</div>
+    
+	    			<div class="economic_item economic_item5">
+	      				<h3 class="economic_title" ms-text="@graphics[4].catName">
+	       					
+	      				</h3>
+	      				<div class="airway_wrap clearfix">
+	        				<ul>
+	          					<li class="li1"><em ms-text="@graphics[4].list[0].name"></em><span ms-text="@graphics[4].list[0].content"></span></li>
+	           					<li class="li2"><em ms-text="@graphics[4].list[1].name"></em><span ms-text="@graphics[4].list[1].content"></span></li>
+	            				<li class="li3"><em ms-text="@graphics[4].list[2].name"></em><span ms-text="@graphics[4].list[2].content"></span></li>
+	             				<li class="li4"><em ms-text="@graphics[4].list[3].name"></em><span ms-text="@graphics[4].list[3].content"></span></li>
+	        				</ul>
+	        				<dl>
+	        					<!-- 外链功能开启用这个 -->
+	        					<!-- <a ms-attr="{href : @advert[0].linkUrl}" target="_blank">
+	          						<dt>
+	            						<img ms-attr="{src : @advert[0].imgUrl}">
+	          						</dt>
+	          						<dd>
+	            						<span>品 / 牌 / 航 / 线 / 介 / 绍</span><em>查看详情+</em>
+	          						</dd>
+	          					</a> -->
+	        					<!-- 外链功能开启用这个 -->
+	        				
+	        					<!-- 外链功能被关闭用这个 -->
+	        					<a>
+	          						<dt>
+	            						<img ms-attr="{src : @advert[0].imgUrl}">
+	          						</dt>
+	          						<dd>
+	            						<span>品 / 牌 / 航 / 线 / 介 / 绍</span>
+	          						</dd>
+	          					</a>
+	        					<!-- 外链功能被关闭用这个 -->
+	        				</dl>
+	      				</div>
+	    			</div>
+
+	    			<div class="economic_item economic_item6">
+	      				<h3 class="economic_title" ms-text="@graphics[5].catName">
+	        				
+	      				</h3>
+	      				<div class="interwork_wrap clearfix">
+	      				 	<!--ms-for:(index,el) in @graphics[5].list-->
+		       					<dl>
+		       						<a>
+		           						<dt>
+				             				<img ms-attr="{src : @el.imgUrl}"/>
+				           				</dt>
+				           				<dd>
+				             				<h3 ms-text="@el.name"></h3>
+				             				<i class="line"></i>
+				             				<div class="txt" ms-text="@el.content"></div>
+				           				</dd>
+				         			</a>
+				         		</dl>
+							<!--ms-for-end:-->
+	      				</div>
+	    			</div>
+
+	    			<div class="economic_item economic_item7">
+	      				<h3 class="economic_title" ms-text="@graphics[6].catName">
+	       					
+	      				</h3>
+	      				<div class="track_wrap clearfix">
+	      					<!--ms-for:(index,el) in @graphics[6].list-->
+		        				
+		          				<!-- 外链功能开启用这个 -->
+		          				<!-- <dl>
+		        					<a ms-attr="{href : @el.linkUrl}" target="_blank">
+			            				<dt>
+			              					<h3 ms-text="@el.name"></h3>
+			              					<h4><img ms-attr="{src : @el.imgUrl}"></h4>
+			              					<i class="line"></i>
+			            				</dt>
+			            				<dd>
+			              					<div class="txt" ms-text="@el.content"></div>
+			              					<h5>查看详情+</h5>
+			            				</dd>
+		          					</a>
+		          				</dl> -->
+		          				<!-- 外链功能开启用这个 -->
+		          				
+		          				<!-- 外链功能被关闭用这个 -->
+		          				<dl>
+		        					<a>
+			            				<dt>
+			              					<h3 ms-text="@el.name"></h3>
+			              					<h4><img ms-attr="{src : @el.imgUrl}"></h4>
+			              					<i class="line"></i>
+			            				</dt>
+			            				<dd>
+			              					<div class="txt" ms-text="@el.content"></div>
+			              					<!-- <h5>查看详情+</h5> -->
+			            				</dd>
+		          					</a>
+		          				</dl>
+		          				<!-- 外链功能被关闭用这个 -->
+		          				
+	          				<!--ms-for-end:-->
+	      				</div>
+	    			</div>
+
+    				<div class="economic_ad">
+      					<!-- 外链功能开启用这个 -->
+      					<!-- <a ms-attr="{href : @advert[1].linkUrl}" target="_blank">
+        					<img ms-attr="{src : @advert[1].imgUrl}">
+      					</a> -->
+      					<!-- 外链功能开启用这个 -->
+      					
+      					<!-- 外链功能被关闭用这个 -->
+      					<a>
+        					<img ms-attr="{src : @advert[1].imgUrl}">
+      					</a>
+      					<!-- 外链功能被关闭用这个 -->
+    				</div>
+				</div>
+  			</div>
+			<!-- 长江经济带页面 end-->
+		</section>
+
+		<!-- 底部 -->
+		<footer class="footer">
+ 			<div class="w_1360" ms-html="@resourcesCommon.bottomFont">
+    			
+  			</div>
+		</footer>
+		
+	</body>
+</html>
