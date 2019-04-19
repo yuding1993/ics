@@ -1,15 +1,14 @@
 package org.wheport.ics.config;
 
-import com.bjenfo.cas.client.validation.EnfoCas20ProxyReceivingTicketValidationFilter;
 import org.jasig.cas.client.authentication.AuthenticationFilter;
 import org.jasig.cas.client.session.SingleSignOutFilter;
 import org.jasig.cas.client.util.AssertionThreadLocalFilter;
 import org.jasig.cas.client.util.HttpServletRequestWrapperFilter;
-import org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.wheport.ics.filter.EnfoCas20ProxyReceivingTicketValidationFilter;
 
 import java.util.HashMap;
 import java.util.Map;
