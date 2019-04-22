@@ -117,8 +117,8 @@ public class ViewController {
      */
     @ApiOperation(value = "获取qp登录的参数值" ,  notes="获取qp登录的参数值")
     @RequestMapping(value="/turnToQp",method=RequestMethod.GET)
-    public ReturnModel turnToQp(@RequestParam(value="id")Integer actionId){
-        return actionInfoServiceImpl.turnToQp(actionId);
+    public ReturnModel turnToQp(){
+        return actionInfoServiceImpl.turnToQp();
     }
 
     /**

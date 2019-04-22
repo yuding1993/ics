@@ -21,7 +21,7 @@ public class ActionInfoServiceImpl implements ActionInfoService {
     private ActionInfoMapper actionInfoMapper;
 
     @Override
-    public ReturnModel turnToQp(Integer actionId) {
+    public ReturnModel turnToQp() {
         ReturnModel result = new ReturnModel();
 
         Assertion assertion = AssertionHolder.getAssertion();
@@ -45,11 +45,9 @@ public class ActionInfoServiceImpl implements ActionInfoService {
 
                 service = URLEncoder.encode(service);
 
-                ActionInfo actionInfo = new ActionInfo();
-                actionInfo.setId(actionId);
-                actionInfo = actionInfoMapper.selectByPrimaryKey(actionInfo);
+                String linkUrl = "http://cas.chinaport.gov.cn/cas/login?service=";
 
-                String resultUrl = actionInfo.getActionLinkUrl() + service;
+                String resultUrl = linkUrl + service;
 
                 result.setCode(EnumConstants.RETURN_SUCCESS.getCode());
                 result.setObj(resultUrl);

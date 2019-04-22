@@ -4,7 +4,7 @@ import org.wheport.ics.domain.bo.ReturnModel;
 
 public interface ActionInfoService {
 
-    ReturnModel turnToQp(Integer actionId);
+    ReturnModel turnToQp();
 
     ReturnModel getSuffixUrl(Integer id);
 
