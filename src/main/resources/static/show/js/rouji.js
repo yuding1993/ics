@@ -10,6 +10,7 @@ $(document).ready(function(){
 			vm.isLogin = data.obj.isLogin;
 			vm.isNotLogin = !data.obj.isLogin;
 			var userName = data.obj.userName;
+			vm.userNameComplete = userName;
 			userName = "***"+userName.substring(userName.length-3,userName.length);
 			vm.userName = userName;
 			if(vm.isLogin && vm.nowModuleId == 1){//首页

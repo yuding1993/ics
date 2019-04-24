@@ -23,6 +23,7 @@ var vm = avalon.define({
     isLogin: false,//登陆状态,
     isNotLogin: true,
     userName: "",//登陆用户名
+    userNameComplete: "",//用户名全称
     skipPage: function (moduleId, pageUrl) {
         $.ajax({
             url: "../view/checkMenuAuth",
@@ -193,7 +194,7 @@ function viewDetail(pressId, parentCatId, belongModuleId)//跳转到资讯详情
     window.location.href = "pressDetail.html?catIdOne=" + parentCatId + "&pressId=" + pressId + "&moduleId=" + belongModuleId;
 }
 
-function openUrlByIcLogin() {//打开需要ic卡登录才打开的页面
+function openQp() {//打开qp
     if (vm.isLogin) {
         $.get("../view/checkIsIcLogin", {}, function (data) {
             if (data.code == "0") {
@@ -206,6 +207,24 @@ function openUrlByIcLogin() {//打开需要ic卡登录才打开的页面
                         return false;
                     }
                 });
+            } else {
+                alert("必须通过IC卡登陆本系统方可访问！");
+                // $(".icLogin").show();
+                return false;
+            }
+        });
+    } else {
+        alert("必须通过IC卡登陆本系统方可访问！");
+        // $(".icLogin").show();
+        return false;
+    }
+}
+
+function openInsuranceBond() {//打开保金保函
+    if (vm.isLogin) {
+        $.get("../view/checkIsIcLogin", {}, function (data) {
+            if (data.code == "0") {
+                window.open("https://search.wh-eport.cn/zhcx/a/guarantee/index");
             } else {
                 alert("必须通过IC卡登陆本系统方可访问！");
                 // $(".icLogin").show();

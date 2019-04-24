@@ -65,7 +65,7 @@
                 <a target="_blank" href="https://sso.wh-eport.cn/ulogin?service=http://gjhbsso.wh-eport.cn/whgw-sso/SSOLoginServlet">报关单申报</a>
                 <a target="_blank" href="https://sso.wh-eport.cn/ulogin?service=http://gjhbsso.wh-eport.cn/whgw-sso/SSOLoginServlet">转关单申报</a>
                 <a target="_blank" href="https://cert.wh-eport.cn/user/certalllist">原产地证申报</a>
-                <a target="_blank" onclick="openUrlByIcLogin()">报关申报（旧版）</a>
+                <a target="_blank" onclick="openQp()">报关申报（旧版）</a>
                 <a target="_blank" href="https://decl.wh-eport.cn/html/shortcut.html">电子报检（旧版）</a>
                 <a target="_blank" href="https://search.wh-eport.cn/zhcx/">综合查询</a>
             </div>
@@ -83,7 +83,12 @@
         </li>
         <li><img src="../images/ico_wh05.png" alt=""/><p>保税物流</p>
             <div class="menu_list four">
-                <a target="_blank" href="http://sso.wh-eport.cn/ulogin?service=http://bls.wh-eport.cn/views/admin/login/autoLogin.html?code=bls">保税园区管理</a>
+                <span ms-if="@isLogin">
+                    <a target="_blank" ms-attr="{href:'https://sso.wh-eport.cn/ulogin?service=https://bls.wh-eport.cn/views/admin/login/autoLogin.html?code='+@userNameComplete}">保税园区管理</a>
+                </span>
+                <span ms-if="@isNotLogin">
+                    <a target="_blank" href="https://sso.wh-eport.cn/ulogin?service=https://bls.wh-eport.cn/views/admin/login/autoLogin.html?code=bls">保税园区管理</a>
+                </span>
                 <a target="_blank" href="https://qgld.wh-eport.cn/">区港联动</a>
                 <a target="_blank" href="https://wlksh.wh-eport.cn/">物流可视化</a>
             </div>
@@ -121,7 +126,7 @@
         <li><img src="../images/ico_wh11.png" alt=""/><p>政务服务</p>
             <div class="menu_list nine">
                 <a target="_blank" href="https://search.wh-eport.cn/zhcx/a/enterprise/qualification/index">企业资质</a>
-                <a href="javascript:;">保金保函</a>
+                <a onclick="openInsuranceBond()">保金保函</a>
                 <a target="_blank" href="https://dwhl.wh-eport.cn/">对外互联</a>
             </div>
         </li>
