@@ -7917,8 +7917,10 @@ a:hover,a:active{color:#3189d3; text-decoration:none;}
 
 .header_wh{ border-top:2px solid #2c6dd2; height:38px;}
 .header_right{ background:url(../images/wheport_04.jpg) #2c6dd2 no-repeat; height:38px; width:358px; float:right; line-height:36px; padding-left:14px;}
-.header_right a{ font-size:16px; color:#fff; margin-left:45px;}
-.header_right span{ float:right; margin-right:32px;}
+.header_right .span_before a{ font-size:16px; color:#fff; margin-left:45px;}
+.header_right .span_before{ float:right; margin-right:32px;}
+.header_right .span_after a{ font-size:16px; color:#fff; margin-left:15px;}
+.header_right .span_after{ float:right; margin-right:20px;}
 .header_right span a:hover{ opacity:0.8;}
 .header_right a.android,.header_right a.ios{ background:url(../images/ico_os.png) no-repeat; width:16px; height:20px; float:left; margin:7px 0 0 36px; position:relative;}
 .header_right a.android{ background-position:0 -26px;}

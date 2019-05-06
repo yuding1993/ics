@@ -30,11 +30,12 @@
         <a class="ios"><b><em><img ms-attr="{src : @resourcesCommon.iosImgUrl}"><i>苹果客户端</i></em></b></a>
         <a class="android"><b><em><img ms-attr="{src : @resourcesCommon.androidImgUrl}"><i>安卓客户端</i></em></b></a>
         <!-- 头部登录 -->
-        <span ms-if="@isLogin">
+        <span class="span_after" ms-if="@isLogin">
             <c>欢迎您 {{@userName}}</c>
-            <a href="/sec/modifyUserInfoUrl">企业中心</a>
+            <a class="" href="/sec/modifyUserInfoUrl">企业中心</a>
+            <a class="" href="/sec/logout">退出</a>
         </span>
-        <span ms-if="@isNotLogin">
+        <span class="span_before" ms-if="@isNotLogin">
             <a href="/sec/login">登录</a>
             <a href="/view/register">注册</a>
         </span>

@@ -170,7 +170,7 @@ public class LoginServiceImpl implements LoginService {
         ModelAndView mav = new ModelAndView();
         HttpSession session = request.getSession();
         // 用户登出时将session无效化
-//        session.invalidate();
+        session.invalidate();
         mav.setView(new RedirectView(casLogoutUrl, false));
         return mav;
     }
