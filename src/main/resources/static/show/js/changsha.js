@@ -17,27 +17,46 @@ var vm = avalon.define({
 	nowModuleId : 0,//现在的模块id
 	isLogin : false,//登陆状态
 	userName : "",//登陆用户名
-    skipPage : function(moduleId,pageUrl){
-        $.ajax({
-            url : "../view/checkMenuAuth",
-            data : {
-                type : "module",
-                id : moduleId
-            },
-            dataType : "json",
-            async : false,
-            success : function(resp){
-                if(resp.code != 0){
-                    alert("没有权限访问");
-                    return;
-                }
-                window.location.href = pageUrl+"?moduleId="+moduleId;//跳转模块页面
-            },
-            error : function(){
-                alert("服务器异常");
-            }
-        });
-    },
+	skipPage: function (moduleId, pageUrl) {
+		// 某些模块未登录禁止访问（后台判断）
+		$.ajax({
+			url: "../view/checkIsVisit",
+			data: {
+				type: "module",
+				id: moduleId
+			},
+			dataType: "json",
+			async: false,
+			success: function (resp) {
+				if (resp.code != 0) {
+					alert("必须登录本系统方可访问！");
+					return;
+				}
+				$.ajax({
+					url: "../view/checkMenuAuth",
+					data: {
+						type: "module",
+						id: moduleId
+					},
+					dataType: "json",
+					async: false,
+					success: function (resp) {
+						if (resp.code != 0) {
+							alert("没有权限访问");
+							return;
+						}
+						window.location.href = pageUrl + "?moduleId=" + moduleId;//跳转模块页面
+					},
+					error: function () {
+						alert("服务器异常");
+					}
+				});
+			},
+			error: function () {
+				alert("服务器异常");
+			}
+		});
+	},
 	gotoPressCatList : function(catIdOne,belongModuleId){//跳转资讯分类页面
 		window.location.href = "pressCatList.html?catIdOne="+catIdOne+"&moduleId="+belongModuleId;
 	},

@@ -25,8 +25,9 @@ var vm = avalon.define({
     userName: "",//登陆用户名
     userNameComplete: "",//用户名全称
     skipPage: function (moduleId, pageUrl) {
+        // 某些模块未登录禁止访问（后台判断）
         $.ajax({
-            url: "../view/checkMenuAuth",
+            url: "../view/checkIsVisit",
             data: {
                 type: "module",
                 id: moduleId
@@ -35,10 +36,28 @@ var vm = avalon.define({
             async: false,
             success: function (resp) {
                 if (resp.code != 0) {
-                    alert("没有权限访问");
+                    alert("必须登录本系统方可访问！");
                     return;
                 }
-                window.location.href = pageUrl + "?moduleId=" + moduleId;//跳转模块页面
+                $.ajax({
+                    url: "../view/checkMenuAuth",
+                    data: {
+                        type: "module",
+                        id: moduleId
+                    },
+                    dataType: "json",
+                    async: false,
+                    success: function (resp) {
+                        if (resp.code != 0) {
+                            alert("没有权限访问");
+                            return;
+                        }
+                        window.location.href = pageUrl + "?moduleId=" + moduleId;//跳转模块页面
+                    },
+                    error: function () {
+                        alert("服务器异常");
+                    }
+                });
             },
             error: function () {
                 alert("服务器异常");
@@ -61,6 +80,19 @@ var vm = avalon.define({
             return false;
         }
         window.open(url);
+    },
+    /**
+     * 打开前检查是否登录
+     * @returns {boolean}
+     */
+    openBeforeCheck: function (url) {
+        if (vm.isLogin) {
+            window.open(url);
+        } else {
+            alert("必须登录本系统方可访问！");
+            // $(".icLogin").show();
+            return false;
+        }
     },
     openFriendLink: function (url, linkId) {//打开新页面
         if (url == "" || url == null || url == undefined) {
@@ -194,7 +226,11 @@ function viewDetail(pressId, parentCatId, belongModuleId)//跳转到资讯详情
     window.location.href = "pressDetail.html?catIdOne=" + parentCatId + "&pressId=" + pressId + "&moduleId=" + belongModuleId;
 }
 
-function openQp() {//打开qp
+/**
+ * 打开qp
+ * @returns {boolean}
+ */
+function openQp() {
     if (vm.isLogin) {
         $.get("../view/checkIsIcLogin", {}, function (data) {
             if (data.code == "0") {
@@ -220,19 +256,23 @@ function openQp() {//打开qp
     }
 }
 
-function openInsuranceBond() {//打开保金保函
+/**
+ * 打开保金保函
+ * @returns {boolean}
+ */
+function openInsuranceBond() {
     if (vm.isLogin) {
         $.get("../view/checkIsIcLogin", {}, function (data) {
             if (data.code == "0") {
                 window.open("https://search.wh-eport.cn/zhcx/a/guarantee/index");
             } else {
-                alert("必须通过IC卡登陆本系统方可访问！");
+                alert("必须通过IC卡登录本系统方可访问！");
                 // $(".icLogin").show();
                 return false;
             }
         });
     } else {
-        alert("必须通过IC卡登陆本系统方可访问！");
+        alert("必须通过IC卡登录本系统方可访问！");
         // $(".icLogin").show();
         return false;
     }

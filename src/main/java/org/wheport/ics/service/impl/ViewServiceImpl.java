@@ -704,4 +704,29 @@ public class ViewServiceImpl implements ViewService {
         result.setCode(EnumConstants.RETURN_SUCCESS.getCode());
         return result;
     }
+
+    @Override
+    public ReturnModel checkIsVisit(String type, String id) {
+        Assertion assertion = AssertionHolder.getAssertion();
+        ReturnModel result = new ReturnModel();
+        // 获取用户信息
+        if(assertion == null){
+            // 由于不能轻易更改数据库表结构，此处暂写死,以下为用户未登录时不能访问的菜单
+            Map<String, String> moduleNameUnAccess = new HashMap<>();
+            moduleNameUnAccess.put("3", "口岸通关");
+            moduleNameUnAccess.put("4", "数据中心");
+            moduleNameUnAccess.put("6", "湖北水运平台");
+            moduleNameUnAccess.put("7", "办事指南");
+
+            Set<String> moduleIds = moduleNameUnAccess.keySet();
+            if (moduleIds.contains(id)){
+                result.setCode(EnumConstants.RETURN_FAIL.getCode());
+            } else {
+                result.setCode(EnumConstants.RETURN_SUCCESS.getCode());
+            }
+        } else {
+            result.setCode(EnumConstants.RETURN_SUCCESS.getCode());
+        }
+        return result;
+    }
 }

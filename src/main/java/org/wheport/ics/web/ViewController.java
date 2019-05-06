@@ -251,6 +251,19 @@ public class ViewController {
     }
 
     /**
+     * 查询访问资源是否需要登录
+     * @param type 资源类型
+     * @param id 资源id
+     * @return
+     */
+    @ApiOperation(value = "查询能否访问资源" ,  notes="查询访问资源是否需要登录")
+    @GetMapping("/checkIsVisit")
+    public ReturnModel checkIsVisit(@RequestParam(value="type")String type, @RequestParam(value="id")String id){
+        ReturnModel rm = viewServiceImpl.checkIsVisit(type, id);
+        return rm;
+    }
+
+    /**
      * 注册跳转
      * @param request
      * @return

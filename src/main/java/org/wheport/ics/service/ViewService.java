@@ -94,4 +94,12 @@ public interface ViewService {
      * @return
      */
     ReturnModel checkMenuAuth(String type, String id);
+
+    /**
+     * 查询访问资源是否需要登录
+     * @param type
+     * @param id
+     * @return
+     */
+    ReturnModel checkIsVisit(String type, String id);
 }

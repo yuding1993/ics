@@ -63,72 +63,67 @@
 
         <li><img src="../images/ico_wh02.png" alt=""/><p>货物申报</p>
             <div class="menu_list one">
-                <a target="_blank" href="https://sso.wh-eport.cn/ulogin?service=https://gjhbsso.wh-eport.cn/whgw-sso/SSOLoginServlet">报关单申报</a>
-                <a target="_blank" href="https://sso.wh-eport.cn/ulogin?service=https://gjhbsso.wh-eport.cn/whgw-sso/SSOLoginServlet">转关单申报</a>
-                <a target="_blank" href="https://cert.wh-eport.cn/user/certalllist">原产地证申报</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://sso.wh-eport.cn/ulogin?service=https://gjhbsso.wh-eport.cn/whgw-sso/SSOLoginServlet')">报关单申报</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://sso.wh-eport.cn/ulogin?service=https://gjhbsso.wh-eport.cn/whgw-sso/SSOLoginServlet')">转关单申报</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://cert.wh-eport.cn/user/certalllist')">原产地证申报</a>
                 <a target="_blank" onclick="openQp()">报关申报（旧版）</a>
-                <a target="_blank" href="https://decl.wh-eport.cn/html/shortcut.html">电子报检（旧版）</a>
-                <a target="_blank" href="https://search.wh-eport.cn/zhcx/">综合查询</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://decl.wh-eport.cn/html/shortcut.html')">电子报检（旧版）</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://search.wh-eport.cn/zhcx/')">综合查询</a>
             </div>
         </li>
         <li><img src="../images/ico_wh03.png" alt=""/><p>运输工具<br>申报</p>
             <div class="menu_list two">
-                <a target="_blank" href="https://ship.wh-eport.cn/">船舶申报</a>
-                <a target="_blank" href="https://air.wh-eport.cn/">航空器申报</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://ship.wh-eport.cn/')">船舶申报</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://air.wh-eport.cn/')">航空器申报</a>
             </div>
         </li>
         <li><img src="../images/ico_wh04.png" alt=""/><p>出入境人员<br>联网监管</p>
             <div class="menu_list three">
-                <a target="_blank" href="https://crjjg.wh-eport.cn/">出入境人员联网监管</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://crjjg.wh-eport.cn/')">出入境人员联网监管</a>
             </div>
         </li>
         <li><img src="../images/ico_wh05.png" alt=""/><p>保税物流</p>
             <div class="menu_list four">
-                <span ms-if="@isLogin">
-                    <a target="_blank" ms-attr="{href:'https://sso.wh-eport.cn/ulogin?service=https://bls.wh-eport.cn/views/admin/login/autoLogin.html?code='+@userNameComplete}">保税园区管理</a>
-                </span>
-                <span ms-if="@isNotLogin">
-                    <a target="_blank" href="https://sso.wh-eport.cn/ulogin?service=https://bls.wh-eport.cn/views/admin/login/autoLogin.html?code=bls">保税园区管理</a>
-                </span>
-                <a target="_blank" href="https://qgld.wh-eport.cn/">区港联动</a>
-                <a target="_blank" href="https://wlksh.wh-eport.cn/">物流可视化</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://sso.wh-eport.cn/ulogin?service=https://bls.wh-eport.cn/views/admin/login/autoLogin.html?code='+@userNameComplete)">保税园区管理</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://qgld.wh-eport.cn/')">区港联动</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://wlksh.wh-eport.cn/')">物流可视化</a>
             </div>
         </li>
         <li><img src="../images/ico_wh06.png" alt=""/><p>多式联运</p>
             <div class="menu_list five">
-                <a target="_blank" href="https://www.hb-syw.cn/">水运物流</a>
-                <a target="_blank" href="https://konggang.wh-eport.cn/">空港货栈</a>
-                <a target="_blank" href="https://tielu.wh-eport.cn/">铁路货场</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://www.hb-syw.cn/')">水运物流</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://konggang.wh-eport.cn/')">空港货栈</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://tielu.wh-eport.cn/')">铁路货场</a>
             </div>
         </li>
         <li><img src="../images/ico_wh07.png" alt=""/><p>物流贸易</p>
             <div class="menu_list six">
-                <a target="_blank" href="https://cbec.wh-eport.cn/cbec-web/system">跨境电商公共服务</a>
-                <a target="_blank" href="http://shop.wh-eport.cn/sccg_wh/">市场采购贸易</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://cbec.wh-eport.cn/cbec-web/system')">跨境电商公共服务</a>
+                <a target="_blank" ms-click="@openBeforeCheck('http://shop.wh-eport.cn/sccg_wh/')">市场采购贸易</a>
             </div>
         </li>
         <li><img src="../images/ico_wh08.png" alt=""/><p>增值服务</p>
             <div class="menu_list seven">
-                <a target="_blank" href="https://kjzz.wh-eport.cn/">跨境电商增值服务</a>
-                <a target="_blank" href="https://spsy_qyd.wh-eport.cn/">防伪溯源</a>
-                <a target="_blank" href="https://wsswj.hb-n-tax.gov.cn/">出口退税</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://kjzz.wh-eport.cn/')">跨境电商增值服务</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://spsy_qyd.wh-eport.cn/')">防伪溯源</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://wsswj.hb-n-tax.gov.cn/')">出口退税</a>
             </div>
         </li>
-        <li><a target="_blank" href="https://finance.wh-eport.cn/hywsite/i/wh/index.html"><img src="../images/ico_wh09.png" alt=""/><p>金融服务</p></a>
+        <li><a target="_blank" ms-click="@openBeforeCheck('https://finance.wh-eport.cn/hywsite/i/wh/index.html')"><img src="../images/ico_wh09.png" alt=""/><p>金融服务</p></a>
             <div class="menu_list two" style="width: 166px;">
             </div>
         </li>
         <li><img src="../images/ico_wh10.png" alt=""/><p>特色服务</p>
             <div class="menu_list eight">
-                <a target="_blank" href="/show/companyDescYBG.html">云报关</a>
-                <a target="_blank" href="/show/companyDescZNDR.html">智能导入</a>
+                <a target="_blank" ms-click="@openBeforeCheck('/show/companyDescYBG.html')">云报关</a>
+                <a target="_blank" ms-click="@openBeforeCheck('/show/companyDescZNDR.html')">智能导入</a>
             </div>
         </li>
         <li><img src="../images/ico_wh11.png" alt=""/><p>政务服务</p>
             <div class="menu_list nine">
-                <a target="_blank" href="https://search.wh-eport.cn/zhcx/a/enterprise/qualification/index">企业资质</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://search.wh-eport.cn/zhcx/a/enterprise/qualification/index')">企业资质</a>
                 <a onclick="openInsuranceBond()">保金保函</a>
-                <a target="_blank" href="https://dwhl.wh-eport.cn/">对外互联</a>
+                <a target="_blank" ms-click="@openBeforeCheck('https://dwhl.wh-eport.cn/')">对外互联</a>
             </div>
         </li>
     </ul>
