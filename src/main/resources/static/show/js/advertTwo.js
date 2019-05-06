@@ -41,7 +41,7 @@ function queryResourcesCommon(){
 		url : "../view/queryResourcesCommon",
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 

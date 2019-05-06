@@ -36,7 +36,7 @@ var vm = avalon.define({
 			async: false,
 			success: function (resp) {
 				if (resp.code != 0) {
-					alert("必须登录本系统方可访问！");
+					layer.msg('必须登录本系统方可访问！', {icon: 7,time:3000});
 					return;
 				}
 				$.ajax({
@@ -49,18 +49,18 @@ var vm = avalon.define({
 					async: false,
 					success: function (resp) {
 						if (resp.code != 0) {
-							alert("没有权限访问");
+							layer.msg('没有权限访问！', {icon: 7,time:3000});
 							return;
 						}
 						window.location.href = pageUrl + "?moduleId=" + moduleId;//跳转模块页面
 					},
 					error: function () {
-						alert("服务器异常");
+						layer.msg('服务器异常！', {icon: 7,time:3000});
 					}
 				});
 			},
 			error: function () {
-				alert("服务器异常");
+				layer.msg('服务器异常！', {icon: 7,time:3000});
 			}
 		});
 	},
@@ -107,7 +107,7 @@ var vm = avalon.define({
 			data : {catIdOne:vm.nowParentId,pressId:pressId},
 			dataType : 'json',
 			error : function(){
-				alert("系统异常");
+				layer.msg('服务器异常！', {icon: 7,time:3000});
 			},
 			success : function(data){
 				vm.pressDetail = null;
@@ -128,7 +128,7 @@ var vm = avalon.define({
 			data : {catIdOne:vm.nowParentId,pressId:pressId},
 			dataType : 'json',
 			error : function(){
-				alert("系统异常");
+				layer.msg('服务器异常！', {icon: 7,time:3000});
 			},
 			success : function(data){
 				window.open(data.obj.fileInfo.fileUrl);
@@ -146,7 +146,7 @@ function queryResourcesCommon(){
 		url : "../view/queryResourcesCommon",
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 
@@ -165,7 +165,7 @@ function queryIndexPageContent(moduleId){
 		dataType : 'json',
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 			vm.moduleName = data.obj.moduleName;
@@ -183,7 +183,7 @@ function queryPressCatList(){
 		dataType : 'json',
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 			vm.catInfo = data.obj;
@@ -206,7 +206,7 @@ function queryByPage(page){
 		data : {page:page, parentId:vm.catInfo.pressCat.id, catId:vm.catInfo.pressCatList[index].id},
 		dataType : 'json',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 			vm.pressInfo = data.obj;
@@ -221,7 +221,7 @@ function getContent(pressId,catIdOne){
         data : {catIdOne:catIdOne,pressId:pressId},
         dataType : 'json',
         error : function(){
-            alert("系统异常");
+            layer.msg('服务器异常！', {icon: 7,time:3000});
         },
         success : function(data){
             vm.pressDetail = null;

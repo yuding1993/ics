@@ -28,13 +28,13 @@ var vm = avalon.define({
             async : false,
             success : function(resp){
                 if(resp.code != 0){
-                    alert("没有权限访问");
+                    layer.msg('没有权限访问！', {icon: 7,time:3000});
                     return;
                 }
                 window.location.href = pageUrl+"?moduleId="+moduleId;//跳转模块页面
             },
             error : function(){
-                alert("服务器异常");
+                layer.msg('服务器异常！', {icon: 7,time:3000});
             }
         });
     },
@@ -67,7 +67,7 @@ function queryResourcesCommon(){
 		url : "../view/queryResourcesCommon",
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 
@@ -89,7 +89,7 @@ function queryIndexPageContent(moduleId){
 		dataType : 'json',
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 			vm.moduleName = data.obj.moduleName;

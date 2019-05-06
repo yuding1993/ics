@@ -36,7 +36,7 @@ function queryFirstModule(){
 		url : "../view/queryFirstPage",
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 
@@ -55,7 +55,7 @@ function queryResourcesCommon(){
 		url : "../view/queryResourcesCommon",
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 
@@ -70,7 +70,7 @@ function queryModuleList(){
 		url : "../view/queryModuleList",
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 

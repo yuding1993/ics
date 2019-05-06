@@ -31,7 +31,7 @@ var vm = avalon.define({
 			async: false,
 			success: function (resp) {
 				if (resp.code != 0) {
-					alert("必须登录本系统方可访问！");
+					layer.msg('必须登录本系统方可访问！', {icon: 7,time:3000});
 					return;
 				}
 				$.ajax({
@@ -44,18 +44,18 @@ var vm = avalon.define({
 					async: false,
 					success: function (resp) {
 						if (resp.code != 0) {
-							alert("没有权限访问");
+							layer.msg('没有权限访问！', {icon: 7,time:3000});
 							return;
 						}
 						window.location.href = pageUrl + "?moduleId=" + moduleId;//跳转模块页面
 					},
 					error: function () {
-						alert("服务器异常");
+						layer.msg('服务器异常！', {icon: 7,time:3000});
 					}
 				});
 			},
 			error: function () {
-				alert("服务器异常");
+				layer.msg('服务器异常！', {icon: 7,time:3000});
 			}
 		});
 	},
@@ -112,7 +112,7 @@ function queryResourcesCommon(){
 		url : "../view/queryResourcesCommon",
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 
@@ -134,7 +134,7 @@ function queryIndexPageContent(moduleId){
 		dataType : 'json',
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 			vm.moduleName = data.obj.moduleName;
@@ -155,7 +155,7 @@ function queryQuestionAndAnswer(){
 		url : "../view/queryQuestionAndAnswer",
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 
@@ -169,7 +169,7 @@ function queryVideo(){
 		url : "../view/queryVideo",
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 
@@ -184,35 +184,35 @@ function fileChange(value){
 
 function submitComplaint(){
 	if(!$("#name").val()){
-		alert("请输入姓名");
+		layer.msg('请输入姓名！', {icon: 7,time:3000});
 		$("#name").focus();
 		return false;
 	}
 	if(!$("#mobile").val()){
-		alert("请输入电话");
+		layer.msg('请输入电话！', {icon: 7,time:3000});
 		$("#mobile").focus();
 		return false;
 	}else{
 		var mobile = $("#mobile").val();
 		if(!checkMobile(mobile) && !checkPhone(mobile)){
-			alert("请输入正确的电话");
+			layer.msg('请输入正确的电话！', {icon: 7,time:3000});
 			$("#mobile").focus();
 			return false;
 		}
 	}
 	if(!$("#content").val()){
-		alert("请输入内容");
+		layer.msg('请输入内容！', {icon: 7,time:3000});
 		return false;
 	}
 	if($("#complaintFile").val()){
 		var mime = $("#complaintFile").val().toLowerCase().substr($("#complaintFile").val().lastIndexOf("."));
 		if(mime != ".doc" && mime != ".docx"){
-			alert("只允许doc,docx文件");
+			layer.msg('只允许doc,docx文件！', {icon: 7,time:3000});
 			return false;
 		}
 	}
 	if(!$("#captcha").val()){
-		alert("请输入验证码");
+		layer.msg('请输入验证码！', {icon: 7,time:3000});
 		return false;
 	}
 	$("#complaintForm").attr("action","../view/submitComplaint");

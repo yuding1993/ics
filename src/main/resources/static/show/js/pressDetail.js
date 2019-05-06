@@ -43,7 +43,7 @@ function queryResourcesCommon(){
 		url : "../view/queryResourcesCommon",
 		type : 'post',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 
@@ -65,7 +65,7 @@ function queryPressDetail(catIdOne,pressId){
 		data : {catIdOne:catIdOne,pressId:pressId},
 		dataType : 'json',
 		error : function(){
-			alert("系统异常");
+			layer.msg('服务器异常！', {icon: 7,time:3000});
 		},
 		success : function(data){
 			vm.detailInfo = data.obj;
