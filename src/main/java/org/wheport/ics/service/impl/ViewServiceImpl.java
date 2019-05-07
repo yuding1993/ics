@@ -715,7 +715,6 @@ public class ViewServiceImpl implements ViewService {
             Map<String, String> moduleNameUnAccess = new HashMap<>();
             moduleNameUnAccess.put("3", "口岸通关");
             moduleNameUnAccess.put("4", "数据中心");
-            moduleNameUnAccess.put("6", "湖北水运平台");
             moduleNameUnAccess.put("7", "办事指南");
 
             Set<String> moduleIds = moduleNameUnAccess.keySet();

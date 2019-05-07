@@ -36,7 +36,7 @@ var vm = avalon.define({
             async: false,
             success: function (resp) {
                 if (resp.code != 0) {
-                    layer.msg('必须登录本系统方可访问！', {icon: 7,time:3000});
+                    layer.msg('您还未登录，请登录后再试！', {icon: 7,time:3000});
                     return;
                 }
                 $.ajax({
@@ -89,7 +89,7 @@ var vm = avalon.define({
         if (vm.isLogin) {
             window.open(url);
         } else {
-            layer.msg('必须登录本系统方可访问！', {icon: 7,time:3000});
+            layer.msg('您还未登录，请登录后再试！', {icon: 7,time:3000});
             // $(".icLogin").show();
             return false;
         }
@@ -153,6 +153,10 @@ var vm = avalon.define({
     actionMap: {}
     // 所有子系统应用模块结束
 });
+
+window.onload = function(){
+    show1();
+}
 
 function queryResourcesCommon() {
     $.ajax({
@@ -276,4 +280,29 @@ function openInsuranceBond() {
         // $(".icLogin").show();
         return false;
     }
+}
+
+function show1(){
+    document.getElementById("div_iframe1").hidden="";
+    document.getElementById("div_iframe2").hidden="hidden";
+    try{
+        document.getElementById("div_iframe3").hidden="hidden";
+    }catch(e){}
+}
+
+function show2(){
+    document.getElementById("div_iframe1").hidden="hidden";
+    document.getElementById("div_iframe2").hidden="";
+    try{
+        document.getElementById("div_iframe3").hidden="hidden";
+    }catch(e){}
+    checkSetupControl();//检查是否要安装客户端控件
+}
+
+function show3(){
+    document.getElementById("div_iframe1").hidden="hidden";
+    document.getElementById("div_iframe2").hidden="hidden";
+    try{
+        document.getElementById("div_iframe3").hidden="";
+    }catch(e){}
 }

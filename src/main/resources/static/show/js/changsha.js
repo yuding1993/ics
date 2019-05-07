@@ -29,7 +29,7 @@ var vm = avalon.define({
 			async: false,
 			success: function (resp) {
 				if (resp.code != 0) {
-					layer.msg('必须登录本系统方可访问！', {icon: 7,time:3000});
+					layer.msg('您还未登录，请登录后再试！', {icon: 7,time:3000});
 					return;
 				}
 				$.ajax({
