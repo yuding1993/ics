@@ -33,8 +33,8 @@
         <!-- 头部登录 -->
         <span class="span_after" ms-if="@isLogin">
             <c>欢迎您 {{@userName}}</c>
-            <a class="" href="/sec/modifyUserInfoUrl">企业中心</a>
             <a class="" href="/sec/logout">退出</a>
+            <a class="" href="/sec/modifyUserInfoUrl">企业中心</a>
         </span>
         <span class="span_before" ms-if="@isNotLogin">
             <a href="/sec/login">登录</a>
